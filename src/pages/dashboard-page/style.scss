@@ -1,0 +1,10 @@
+.left-area {
+  background-color: var(--secondary-color);
+  flex: 1 1 10%;
+  max-width: 10%;
+}
+
+.right-area {
+  flex: 1 1 90%;
+  max-width: 90%;
+}

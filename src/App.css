@@ -1,1 +1,12 @@
 @import "tailwindcss";
+@import "@flaticon/flaticon-uicons/css/all/all";
+:root{
+    --main-color: #452E74;
+    --secondary-color: #F0F0F0;
+    --highlighted-color: #FE6221;
+}
+
+.main {
+    min-height: 100vh;
+    max-height: 100%;
+}

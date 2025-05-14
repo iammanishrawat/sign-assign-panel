@@ -1,0 +1,22 @@
+ul {
+  display: flex;
+  flex-direction: column;
+  border-radius: 0.554rem;
+  overflow: hidden;
+  li {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0 10px;
+    cursor: pointer;
+    height: 3.354rem;
+    &.active {
+      background-color: var(--main-color);
+      color: var(--secondary-color);
+    }
+    &:hover {
+      background-color: var(--main-color);
+      color: var(--secondary-color);
+    }
+  }
+}
