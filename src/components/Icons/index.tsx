@@ -1,10 +1,12 @@
 import {
-    Gauge,
-    User,
-    NotebookTabs,
-    ShoppingCart,
-    Scale3d,
-    UserCog
+    // Gauge,
+    // User,
+    // NotebookTabs,
+    // ShoppingCart,
+    // Scale3d,
+    // UserCog,
+    ArrowRight,
+    CircleArrowRight,
 } from "lucide-react"
 
 type Props = {
@@ -17,12 +19,14 @@ type Props = {
 export default function Icons({ name, size, onClick, ...rest }: Props) {
     function renderIcon(name: string) {
         switch (name) {
-            case "Gauge": return <Gauge size={size ?? 20} strokeWidth={1.5} {...rest} />
-            case "User": return <User size={size ?? 20} strokeWidth={1.5} {...rest} />
-            case "NotebookTabs": return <NotebookTabs size={size ?? 20} strokeWidth={1.5} {...rest} />
-            case "ShoppingCart": return <ShoppingCart size={size ?? 20} strokeWidth={1.5} {...rest} />
-            case "Scale3d": return <Scale3d size={size ?? 20} strokeWidth={1.5} {...rest} />
-            case "UserCog": return <UserCog size={size ?? 20} strokeWidth={1.5} {...rest} />
+            // case "Gauge": return <Gauge size={size ?? 20} strokeWidth={1.5} {...rest} />
+            // case "User": return <User size={size ?? 20} strokeWidth={1.5} {...rest} />
+            // case "NotebookTabs": return <NotebookTabs size={size ?? 20} strokeWidth={1.5} {...rest} />
+            // case "ShoppingCart": return <ShoppingCart size={size ?? 20} strokeWidth={1.5} {...rest} />
+            // case "Scale3d": return <Scale3d size={size ?? 20} strokeWidth={1.5} {...rest} />
+            // case "UserCog": return <UserCog size={size ?? 20} strokeWidth={1.5} {...rest} />
+            case "ArrowRight": return <ArrowRight size={size ?? 16} strokeWidth={2} {...rest} />
+            case "CircleArrowRight": return <CircleArrowRight size={size ?? 16} strokeWidth={2} {...rest} />
         }
     }
 

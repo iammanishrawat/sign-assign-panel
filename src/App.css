@@ -2,12 +2,35 @@
 @import "@flaticon/flaticon-uicons/css/all/all";
 :root{
     --main-color: #452E74;
+    --text-color: #1e1e1e;
+    --subtext-color: #6e6e6e;
     --secondary-color: #F0F0F0;
     --highlighted-color: #FE6221;
     --white-color: #ffffff;
+    --border-color: #cccccc;
 }
 
 .main {
     min-height: 100vh;
     max-height: 100%;
+}
+
+.left-area {
+    flex: 1 1 13%;
+    max-width: 13%;
+}
+  
+.right-area {
+    flex: 1 1 87%;
+    max-width: 87%;
+    background-color: var(--secondary-color);
+    border-radius: 0.554rem;
+    overflow: hidden;
+}  
+
+.common-area{
+    background-color: var(--white-color);
+    margin: 1rem;
+    padding: 2rem;
+    border-radius: 0.554rem;
 }
