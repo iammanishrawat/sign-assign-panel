@@ -28,8 +28,11 @@
     .form-inner {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 1rem;
+      gap: 2rem;
       margin-bottom: 2rem;
+      &#threeColLayout {
+        grid-template-columns: repeat(3, 1fr);
+      }
       .form-group {
         label {
           font-size: 0.854rem;
@@ -39,19 +42,38 @@
           border-bottom: 1px solid var(--border-color);
           padding: 0.854rem 0;
           font-size: 0.954rem;
+          color: var(--text-color);
           &:focus-visible {
             outline: 0;
           }
         }
       }
     }
-    button {
-      background-color: var(--highlighted-color);
-      border-radius: 0.554rem;
-      padding: 0.854rem 2.5rem;
-      color: var(--white-color);
-      cursor: pointer;
-      font-size: 0.854rem;
+    .password-norms-area {
+      margin-bottom: 2rem;
+      p {
+        font-size: 0.954rem;
+        color: var(--text-color);
+      }
+      h6 {
+        color: var(--subtext-color);
+        font-size: 0.854rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+    }
+    .button-group {
+      display: flex;
+      gap: 1rem;
+      button {
+        background-color: var(--highlighted-color);
+        border-radius: 0.554rem;
+        padding: 0.854rem 2.5rem;
+        color: var(--white-color);
+        cursor: pointer;
+        font-size: 0.854rem;
+      }
     }
   }
 }

@@ -6,6 +6,7 @@ import {
     // Scale3d,
     // UserCog,
     ArrowRight,
+    CircleArrowRight,
 } from "lucide-react"
 
 type Props = {
@@ -25,6 +26,7 @@ export default function Icons({ name, size, onClick, ...rest }: Props) {
             // case "Scale3d": return <Scale3d size={size ?? 20} strokeWidth={1.5} {...rest} />
             // case "UserCog": return <UserCog size={size ?? 20} strokeWidth={1.5} {...rest} />
             case "ArrowRight": return <ArrowRight size={size ?? 16} strokeWidth={2} {...rest} />
+            case "CircleArrowRight": return <CircleArrowRight size={size ?? 16} strokeWidth={2} {...rest} />
         }
     }
 
