@@ -11,3 +11,61 @@
   border-radius: 0.554rem;
   overflow: hidden;
 }
+
+.common-area {
+  .card-area {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    .card-inner {
+      display: flex;
+      justify-content: space-between;
+      background-color: var(--secondary-color);
+      padding: 1rem;
+      border-radius: 0.554rem;
+      .title-area {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        img {
+          width: 15%;
+        }
+        p {
+          font-size: 0.854rem;
+          color: var(--text-color);
+        }
+      }
+      .counter-area {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        h4 {
+          color: var(--highlighted-color);
+          font-weight: 600;
+          font-size: 1.254rem;
+        }
+        svg {
+          color: var(--main-color);
+        }
+      }
+    }
+  }
+  .info-area {
+    display: flex;
+    flex-direction: column;
+    margin-top: 1rem;
+    gap: 1rem;
+    .info-inner {
+      border: 1px solid var(--secondary-color);
+      border-radius: 0.554rem;
+      padding: 1rem;
+      h6 {
+        font-size: 0.954rem;
+      }
+      p {
+        font-size: 0.854rem;
+        color: var(--subtext-color);
+      }
+    }
+  }
+}
