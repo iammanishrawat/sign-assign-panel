@@ -4,7 +4,7 @@ import orderCompletedIcon from '../../assets/images/Orders Completed.svg'
 import quotesRequestedIcon from '../../assets/images/Quotes Requested.svg'
 const DashboardPage = () => {
     return (
-        <div className="common-area">
+        <>
             <div className="card-area">
                 <div className="card-inner">
                     <div className="title-area">
@@ -37,7 +37,7 @@ const DashboardPage = () => {
                     <p>No order placed</p>
                 </div>
             </div>
-        </div>
+        </>
     )
 }
 

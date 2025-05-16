@@ -1,0 +1,57 @@
+.common-area {
+  .clickable-area {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    button {
+      border: 1px solid var(--border-color);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      border-radius: 0.554rem;
+      padding: 0.854rem;
+      color: var(--subtext-color);
+      cursor: pointer;
+      font-size: 0.854rem;
+      img {
+        width: 15px;
+      }
+      &.active {
+        background-color: var(--main-color);
+        border-color: var(--main-color);
+        color: var(--white-color);
+      }
+    }
+  }
+  form {
+    margin-top: 2rem;
+    .form-inner {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+      margin-bottom: 2rem;
+      .form-group {
+        label {
+          font-size: 0.854rem;
+          color: var(--subtext-color);
+        }
+        input {
+          border-bottom: 1px solid var(--border-color);
+          padding: 0.854rem 0;
+          font-size: 0.954rem;
+          &:focus-visible {
+            outline: 0;
+          }
+        }
+      }
+    }
+    button {
+      background-color: var(--highlighted-color);
+      border-radius: 0.554rem;
+      padding: 0.854rem 2.5rem;
+      color: var(--white-color);
+      cursor: pointer;
+      font-size: 0.854rem;
+    }
+  }
+}

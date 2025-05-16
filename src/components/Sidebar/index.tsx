@@ -21,15 +21,16 @@ const SidebarComponent = () => {
         <>
             <ul>
                 {menuItems.map((item) => (
-                    <Link
-                        to={item.path}
-                    >
-                        <li key={item.path} className={` ${location.pathname === item.path ? "active" : ""
-                            }`}>
+                    <li key={item.path} className={` ${location.pathname === item.path ? "active" : ""
+                        }`}>
+                        <Link
+                            to={item.path}
+                        >
+
                             <img src={item.icon} alt="" />
                             {item.label}
-                        </li>
-                    </Link>
+                        </Link>
+                    </li>
                 ))}
             </ul>
         </>

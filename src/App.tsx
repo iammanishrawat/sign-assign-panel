@@ -14,11 +14,13 @@ const App = () => {
         </div>
         <div className="right-area">
           <HeaderComponent />
-          <Routes>
-            <Route path="/" element={<DashboardPage />} />
-            <Route path="/dashboard" element={<DashboardPage />} />
-            <Route path="/profile" element={<ProfilePage />} />
-          </Routes>
+          <div className="common-area">
+            <Routes>
+              <Route path="/" element={<DashboardPage />} />
+              <Route path="/dashboard" element={<DashboardPage />} />
+              <Route path="/profile" element={<ProfilePage />} />
+            </Routes>
+          </div>
         </div>
       </div>
     </Router>
