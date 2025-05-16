@@ -8,7 +8,7 @@ import AddressBookPage from "./pages/addressbook-page";
 
 const App = () => {
   return <div className="main">
-    <Router>
+    <Router basename="/user-dashboard/dashboard">
       <div className='flex gap-4 h-screen'>
         <div className="left-area">
           <SidebarComponent />
