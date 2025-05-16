@@ -1,3 +1,4 @@
+import { Link, useLocation } from "react-router-dom";
 import './style.scss'
 import dashboardIcon from '../../assets/images/Dashboard.svg'
 import profileIcon from '../../assets/images/Profile.svg'
@@ -6,27 +7,30 @@ import orderIcon from '../../assets/images/Orders.svg'
 import designIcon from '../../assets/images/Designs.svg'
 import ticketIcon from '../../assets/images/Tickets.svg'
 const SidebarComponent = () => {
+    const location = useLocation();
+
+    const menuItems = [
+        { path: "/dashboard", label: "Home", icon: dashboardIcon },
+        { path: "/profile", label: "Profile", icon: profileIcon },
+        { path: "/addressbook", label: "Addressbook", icon: addressBookIcon },
+        { path: "/orders", label: "Orders", icon: orderIcon },
+        { path: "/designs", label: "Designs", icon: designIcon },
+        { path: "/ticket", label: "Tickets", icon: ticketIcon },
+    ];
     return (
         <>
             <ul>
-                <li className="active">
-                    <img src={dashboardIcon} alt="dashboard-icon" />Dashboard
-                </li>
-                <li>
-                    <img src={profileIcon} alt="dashboard-icon" />Profile
-                </li>
-                <li>
-                    <img src={addressBookIcon} alt="dashboard-icon" />Address Book
-                </li>
-                <li>
-                    <img src={orderIcon} alt="dashboard-icon" />Orders
-                </li>
-                <li>
-                    <img src={designIcon} alt="dashboard-icon" />Designs
-                </li>
-                <li>
-                    <img src={ticketIcon} alt="dashboard-icon" />Tickets
-                </li>
+                {menuItems.map((item) => (
+                    <Link
+                        to={item.path}
+                    >
+                        <li key={item.path} className={` ${location.pathname === item.path ? "active" : ""
+                            }`}>
+                            <img src={item.icon} alt="" />
+                            {item.label}
+                        </li>
+                    </Link>
+                ))}
             </ul>
         </>
     )
