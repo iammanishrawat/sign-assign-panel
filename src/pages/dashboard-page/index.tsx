@@ -7,7 +7,9 @@ const DashboardPage = () => {
                 <SidebarComponent />
             </div>
             <div className="right-area">
-                <h2>Dashboard Screen</h2>
+                <div className="header-area">
+
+                </div>
             </div>
         </div>
     )
