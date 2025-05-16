@@ -3,6 +3,7 @@ import SidebarComponent from "./components/Sidebar";
 import HeaderComponent from "./components/Header";
 import DashboardPage from "./pages/dashboard-page";
 import ProfilePage from "./pages/profile-page";
+import AddressBookPage from "./pages/addressbook-page";
 
 
 const App = () => {
@@ -19,6 +20,7 @@ const App = () => {
               <Route path="/" element={<DashboardPage />} />
               <Route path="/dashboard" element={<DashboardPage />} />
               <Route path="/profile" element={<ProfilePage />} />
+              <Route path="/addressbook" element={<AddressBookPage />} />
             </Routes>
           </div>
         </div>
