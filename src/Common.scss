@@ -16,3 +16,54 @@
     }
   }
 }
+
+form {
+  margin-top: 2rem;
+  .form-inner {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    margin-bottom: 2rem;
+    &#threeColLayout {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  .form-group {
+    label {
+      font-size: 0.854rem;
+      color: var(--text-color);
+
+      input[type='checkbox'] {
+        width: 15px;
+        height: 15px;
+        vertical-align: middle;
+        margin-right: 5px;
+        accent-color: var(--highlighted-color);
+      }
+    }
+    input,
+    select {
+      border-bottom: 1px solid var(--border-color);
+      padding: 0.854rem 0;
+      font-size: 0.954rem;
+      color: var(--text-color);
+      &:focus-visible {
+        outline: 0;
+      }
+    }
+  }
+  .password-norms-area {
+    margin-bottom: 2rem;
+    p {
+      font-size: 0.954rem;
+      color: var(--text-color);
+    }
+    h6 {
+      color: var(--subtext-color);
+      font-size: 0.854rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+  }
+}
