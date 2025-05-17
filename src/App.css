@@ -1,6 +1,7 @@
 @import "tailwindcss";
 @import "@flaticon/flaticon-uicons/css/all/all";
-:root{
+
+:root {
     --main-color: #452E74;
     --text-color: #1e1e1e;
     --subtext-color: #6e6e6e;
@@ -19,16 +20,16 @@
     flex: 1 1 13%;
     max-width: 13%;
 }
-  
+
 .right-area {
     flex: 1 1 87%;
     max-width: 87%;
     background-color: var(--secondary-color);
     border-radius: 0.554rem;
-    overflow: hidden;
-}  
+    overflow: auto;
+}
 
-.common-area{
+.common-area {
     background-color: var(--white-color);
     margin: 1rem;
     padding: 2rem;

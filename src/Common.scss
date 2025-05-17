@@ -1,0 +1,18 @@
+.button-group {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+  button {
+    background-color: var(--highlighted-color);
+    border-radius: 0.554rem;
+    padding: 0.854rem 2.5rem;
+    color: var(--white-color);
+    cursor: pointer;
+    font-size: 0.854rem;
+    &:nth-child(2) {
+      background-color: var(--white-color);
+      border: 1px solid var(--highlighted-color);
+      color: var(--highlighted-color);
+    }
+  }
+}
