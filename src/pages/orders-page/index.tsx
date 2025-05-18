@@ -1,4 +1,6 @@
 import Icons from '../../components/Icons'
+import visaIcon from '../../assets/images/visa.svg'
+import ratingIcon from '../../assets/images/Rating.svg'
 import './style.scss'
 
 const OrderPage = () => {
@@ -167,6 +169,28 @@ const OrderPage = () => {
               <h6>Qty: 10</h6>
             </div>
           </div>
+        </div>
+        <div className="payment-mode-area">
+          <div className="left-area">
+            <p>Payment</p>
+            <h6>
+              Visa **40 <img src={visaIcon} alt="" />
+            </h6>
+          </div>
+          <div className="right-area">
+            <p>Delivery</p>
+            <h6>Address</h6>
+            <h5>
+              Africa Ave, Diplomatic Enclave, Chanakyapuri, New Delhi, Delhi
+              110023, India
+            </h5>
+            <h6>Delivery Method</h6>
+            <h5>Free (30 days)</h5>
+          </div>
+        </div>
+        <div className="rating-area">
+          <h4>Rate your deliver experience</h4>
+          <img src={ratingIcon} alt="" />
         </div>
       </div>
     </>

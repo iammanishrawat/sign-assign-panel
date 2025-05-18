@@ -199,5 +199,59 @@
         }
       }
     }
+    .payment-mode-area {
+      display: flex;
+      justify-content: space-between;
+      padding-block: 2rem;
+      border-bottom: 1px solid var(--border-color);
+      .left-area {
+        p {
+          color: var(text-color);
+          font-weight: 600;
+          margin-bottom: 0.554rem;
+        }
+        h6 {
+          display: flex;
+          align-items: flex-start;
+          color: var(--subtext-color);
+          img {
+            width: 25px;
+          }
+        }
+      }
+      .right-area {
+        p {
+          color: var(text-color);
+          font-weight: 600;
+          margin-bottom: 0.554rem;
+        }
+        h6 {
+          display: flex;
+          align-items: flex-start;
+          color: var(--subtext-color);
+          font-size: 0.854rem;
+        }
+        h5 {
+          max-width: 90%;
+          margin-bottom: 1rem;
+        }
+        // & > * {
+        //   margin-block: 1rem;
+        // }
+      }
+    }
+    .rating-area {
+      padding-block: 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      h4 {
+        font-size: 1.554rem;
+        font-weight: 600;
+      }
+      img {
+        width: 20%;
+      }
+    }
   }
 }
