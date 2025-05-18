@@ -9,6 +9,16 @@
     --highlighted-color: #FE6221;
     --white-color: #ffffff;
     --border-color: #cccccc;
+    --green-bg: #d0ffd1;
+    --green-color: #004b03;
+    --blue-bg: #cce0fd;
+    --blue-color: #003b5c;
+    --red-bg: #ffd2d2;
+    --red-color: #5c0000;
+}
+
+body {
+    font-family: "Lato", sans-serif;
 }
 
 .main {
@@ -16,12 +26,12 @@
     max-height: 100%;
 }
 
-.left-area {
+.sidebar-area {
     flex: 1 1 13%;
     max-width: 13%;
 }
 
-.right-area {
+.main-area {
     flex: 1 1 87%;
     max-width: 87%;
     background-color: var(--secondary-color);

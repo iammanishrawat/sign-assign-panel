@@ -5,16 +5,18 @@ import DashboardPage from './pages/dashboard-page'
 import ProfilePage from './pages/profile-page'
 import AddressBookPage from './pages/addressbook-page'
 import TicketPage from './pages/tickets-page'
+import OrderPage from './pages/orders-page'
+import DesignPage from './pages/designs-page'
 
 const App = () => {
   return (
     <div className="main">
       <Router basename="/user-dashboard">
         <div className="flex gap-4 h-screen">
-          <div className="left-area">
+          <div className="sidebar-area">
             <SidebarComponent />
           </div>
-          <div className="right-area">
+          <div className="main-area">
             <HeaderComponent />
             <div className="common-area">
               <Routes>
@@ -22,6 +24,8 @@ const App = () => {
                 <Route path="/dashboard" element={<DashboardPage />} />
                 <Route path="/profile" element={<ProfilePage />} />
                 <Route path="/addressbook" element={<AddressBookPage />} />
+                <Route path="/orders" element={<OrderPage />} />
+                <Route path="/designs" element={<DesignPage />} />
                 <Route path="/tickets" element={<TicketPage />} />
               </Routes>
             </div>

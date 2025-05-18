@@ -1,0 +1,104 @@
+.order-card {
+  margin-top: 2rem;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 1rem;
+  .inner {
+    background-color: var(--secondary-color);
+    padding: 2rem;
+    border-radius: 0.554rem;
+    .top-area {
+      background-color: var(--white-color);
+      padding: 1rem;
+      border-radius: 0.554rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1rem;
+      .right-area {
+        display: flex;
+        gap: 1rem;
+        button {
+          border: 1px solid var(--border-color);
+          padding: 0.554rem 1rem;
+          border-radius: 0.554rem;
+          color: var(--subtext-color);
+          cursor: pointer;
+          font-size: 0.854rem;
+          &.delivered-btn {
+            background-color: var(--green-bg);
+            color: var(--green-color);
+            border: 0;
+            font-weight: 500;
+          }
+          &.processed-btn {
+            background-color: var(--blue-bg);
+            color: var(--blue-color);
+            border: 0;
+            font-weight: 500;
+          }
+          &.cancelled-btn {
+            background-color: var(--red-bg);
+            color: var(--red-color);
+            border: 0;
+            font-weight: 500;
+          }
+        }
+      }
+    }
+    .bottom-area {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      .left-area {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        img {
+          width: 50%;
+          border-radius: 0.554rem;
+        }
+        h5 {
+          font-size: 1rem;
+          font-weight: 600;
+          color: var(--text-color);
+          margin-bottom: 0.254rem;
+        }
+        p {
+          font-size: 0.854rem;
+          color: var(--subtext-color);
+        }
+        h4 {
+          font-size: 1.254rem;
+          font-weight: 600;
+          color: var(--subtext-color);
+          margin-top: 1rem;
+        }
+      }
+      .right-area {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        align-items: flex-end;
+        button {
+          background-color: var(--highlighted-color);
+          border-radius: 0.554rem;
+          padding: 0.554rem 1.5rem;
+          color: var(--white-color);
+          cursor: pointer;
+          font-size: 0.854rem;
+        }
+        h6 {
+          display: flex;
+          align-items: center;
+          gap: 0.354rem;
+          font-size: 0.854rem;
+          color: var(--subtext-color);
+          svg {
+            color: var(--highlighted-color);
+          }
+        }
+      }
+    }
+  }
+}
