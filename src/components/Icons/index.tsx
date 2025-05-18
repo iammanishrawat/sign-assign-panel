@@ -1,4 +1,10 @@
-import { ArrowRight, CircleArrowRight, Plus, MapPin } from 'lucide-react'
+import {
+  ArrowRight,
+  CircleArrowRight,
+  Plus,
+  MapPin,
+  ReceiptText,
+} from 'lucide-react'
 
 type Props = {
   name: string
@@ -18,6 +24,8 @@ export default function Icons({ name, size, onClick, ...rest }: Props) {
         return <Plus size={size ?? 20} strokeWidth={2} {...rest} />
       case 'MapPin':
         return <MapPin size={size ?? 20} strokeWidth={2} {...rest} />
+      case 'ReceiptText':
+        return <ReceiptText size={size ?? 20} strokeWidth={1.5} {...rest} />
     }
   }
 
