@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@flaticon/flaticon-uicons": "^3.3.1",
+    "@headlessui/react": "^2.2.4",
     "@tailwindcss/vite": "^4.1.6",
     "lucide-react": "^0.510.0",
     "react": "^19.1.0",
