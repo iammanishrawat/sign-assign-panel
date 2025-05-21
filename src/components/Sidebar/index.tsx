@@ -12,7 +12,7 @@ const SidebarComponent = () => {
   const menuItems = [
     { path: '/dashboard', label: 'Home', icon: dashboardIcon },
     { path: '/profile', label: 'Profile', icon: profileIcon },
-    { path: '/addressbook', label: 'Addressbook', icon: addressBookIcon },
+    { path: '/addressbook', label: 'Address Book', icon: addressBookIcon },
     { path: '/orders', label: 'Orders', icon: orderIcon },
     { path: '/designs', label: 'Designs', icon: designIcon },
     { path: '/tickets', label: 'Tickets', icon: ticketIcon },

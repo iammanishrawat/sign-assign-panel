@@ -4,6 +4,8 @@ import {
   Plus,
   MapPin,
   ReceiptText,
+  Star,
+  ArrowUpRight,
 } from 'lucide-react'
 
 type Props = {
@@ -26,6 +28,10 @@ export default function Icons({ name, size, onClick, ...rest }: Props) {
         return <MapPin size={size ?? 20} strokeWidth={2} {...rest} />
       case 'ReceiptText':
         return <ReceiptText size={size ?? 20} strokeWidth={1.5} {...rest} />
+      case 'Star':
+        return <Star size={size ?? 20} strokeWidth={2} {...rest} />
+      case 'ArrowUpRight':
+        return <ArrowUpRight size={size ?? 20} strokeWidth={2} {...rest} />
     }
   }
 
