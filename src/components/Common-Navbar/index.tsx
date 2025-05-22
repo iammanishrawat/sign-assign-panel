@@ -1,5 +1,9 @@
-import "./style.scss"
-import logo from "../../assets/images/images/logo.png"
+import './style.scss'
+import logo from '../../assets/images/images/logo.png'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faStar } from '@fortawesome/free-solid-svg-icons'
+import { faPhone } from '@fortawesome/free-solid-svg-icons'
+import { faEnvelope } from '@fortawesome/free-solid-svg-icons'
 
 const CommonNavbarComponent = () => {
   return (
@@ -8,11 +12,11 @@ const CommonNavbarComponent = () => {
         <div className="container-fluid header">
           <div className="review-area">
             <div className="rating-area">
-              <span className="fa fa-star checked"></span>
-              <span className="fa fa-star checked"></span>
-              <span className="fa fa-star checked"></span>
-              <span className="fa fa-star checked"></span>
-              <span className="fa fa-star checked"></span>
+              <FontAwesomeIcon icon={faStar} className="checked" />
+              <FontAwesomeIcon icon={faStar} className="checked" />
+              <FontAwesomeIcon icon={faStar} className="checked" />
+              <FontAwesomeIcon icon={faStar} className="checked" />
+              <FontAwesomeIcon icon={faStar} className="checked" />
             </div>
             <p>Google Reviews</p>
           </div>
@@ -22,13 +26,13 @@ const CommonNavbarComponent = () => {
           <div className="contact-area">
             <div className="phone">
               <a href="#">
-                <i className="fa-solid fa-phone-flip"></i>
+                <FontAwesomeIcon icon={faPhone} />
                 972-418-5253
               </a>
             </div>
             <div className="email">
               <a href="#">
-                <i className="fa-solid fa-envelope"></i>
+                <FontAwesomeIcon icon={faEnvelope} />
                 orders@signassign.com
               </a>
             </div>
@@ -103,10 +107,7 @@ const CommonNavbarComponent = () => {
         <div className="mobile-top-menu">
           <div className="left">
             <a href="/">
-              <img
-                src="https://via.placeholder.com/150x50?text=Logo"
-                alt="Logo"
-              />
+              <img src={logo} alt="Logo" />
             </a>
           </div>
           <div className="right">
@@ -148,7 +149,7 @@ const CommonNavbarComponent = () => {
                                     className="fa fa-chevron-right"
                                     aria-hidden="true"
                                   ></i>
-                                </span>{" "}
+                                </span>{' '}
                                 Services
                               </label>
                               <ul className="group-list">
@@ -160,7 +161,7 @@ const CommonNavbarComponent = () => {
                                       hidden
                                     />
                                     <label htmlFor={`service-sub-group-${i}`}>
-                                      {" "}
+                                      {' '}
                                       Sign Installation
                                     </label>
                                   </li>
@@ -175,20 +176,20 @@ const CommonNavbarComponent = () => {
                                     className="fa fa-chevron-right"
                                     aria-hidden="true"
                                   ></i>
-                                </span>{" "}
+                                </span>{' '}
                                 Products
                               </label>
                               <ul className="group-list">
                                 {[
-                                  "Banner",
-                                  "Window Products",
-                                  "Vehicle Products",
-                                  "Marketing Tools",
-                                  "Event Signs",
-                                  "Indoor Signs",
-                                  "Hardwares",
-                                  "Direct Printing on Material",
-                                  "Direct Printing on Material",
+                                  'Banner',
+                                  'Window Products',
+                                  'Vehicle Products',
+                                  'Marketing Tools',
+                                  'Event Signs',
+                                  'Indoor Signs',
+                                  'Hardwares',
+                                  'Direct Printing on Material',
+                                  'Direct Printing on Material',
                                 ].map((product, i) => (
                                   <li key={`product-${i}`}>
                                     <input

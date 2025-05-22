@@ -5,13 +5,23 @@ footer {
   .footer-inner {
     display: flex;
     gap: 1.5rem;
+    @media (max-width: 767px) {
+      flex-wrap: wrap;
+    }
 
     .footer-col {
       flex: 1 1 auto;
+      @media (max-width: 767px) {
+        flex: 1 1 40%;
+      }
 
       &:nth-child(1) {
         flex: 1 1 25%;
         max-width: 25%;
+        @media (max-width: 767px) {
+          flex: 1 1 100%;
+          max-width: 100%;
+        }
       }
 
       > * {
@@ -55,6 +65,8 @@ footer {
       ul {
         list-style: none;
         padding: 0;
+        display: flex;
+        gap: 1rem;
 
         li a {
           text-decoration: none;
@@ -65,7 +77,7 @@ footer {
 
           svg {
             font-weight: 500;
-            font-size: 1.5rem;
+            font-size: 2rem;
           }
         }
       }
