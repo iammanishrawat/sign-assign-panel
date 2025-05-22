@@ -25,8 +25,5 @@ jobs:
         ssh -i ~/.ssh/id_rsa_sign_assign_panel ubuntu@3.109.198.252 << EOF
           cd /var/www/html/sign-assign/sign-assign-panel/
           git pull origin main
-          rm -rf node_modules/ dist/
-          npm i
-          npm run build
           pm2 reload sign-assign-panel
         EOF
