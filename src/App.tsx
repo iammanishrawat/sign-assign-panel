@@ -7,12 +7,15 @@ import AddressBookPage from './pages/addressbook-page'
 import TicketPage from './pages/tickets-page'
 import OrderPage from './pages/orders-page'
 import DesignPage from './pages/designs-page'
+import CommonNavbarComponent from './components/Common-Navbar'
+import CommonFooterComponent from './components/Common-Footer'
 
 const App = () => {
   return (
     <div className="main">
       <Router basename="/user-dashboard">
-        <div className="flex gap-4 h-screen">
+      <CommonNavbarComponent />
+        <div className="flex gap-4 h-screen my-4">
           <div className="sidebar-area">
             <SidebarComponent />
           </div>
@@ -31,6 +34,7 @@ const App = () => {
             </div>
           </div>
         </div>
+        <CommonFooterComponent />
       </Router>
     </div>
   )
