@@ -1,7 +1,7 @@
 import './style.scss'
 import Icons from '../../components/Icons'
-import orderCompletedIcon from '../../assets/images/Orders Completed.svg'
-import quotesRequestedIcon from '../../assets/images/Quotes Requested.svg'
+import orderCompletedIcon from '../../assets/images/panel-images/Orders Completed.svg'
+import quotesRequestedIcon from '../../assets/images/panel-images/Quotes Requested.svg'
 const DashboardPage = () => {
     return (
         <>

@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+
 import SidebarComponent from './components/Sidebar'
 import HeaderComponent from './components/Header'
 import DashboardPage from './pages/dashboard-page'
@@ -9,12 +10,13 @@ import OrderPage from './pages/orders-page'
 import DesignPage from './pages/designs-page'
 import CommonNavbarComponent from './components/Common-Navbar'
 import CommonFooterComponent from './components/Common-Footer'
+import PanelLayout from './layouts/panelLayout'
 
 const App = () => {
   return (
     <div className="main">
       <Router basename="/user-dashboard">
-      <CommonNavbarComponent />
+        <CommonNavbarComponent />
         <div className="flex gap-4 h-screen my-4">
           <div className="sidebar-area">
             <SidebarComponent />
@@ -23,13 +25,16 @@ const App = () => {
             <HeaderComponent />
             <div className="common-area">
               <Routes>
-                <Route path="/" element={<DashboardPage />} />
-                <Route path="/dashboard" element={<DashboardPage />} />
-                <Route path="/profile" element={<ProfilePage />} />
-                <Route path="/addressbook" element={<AddressBookPage />} />
-                <Route path="/orders" element={<OrderPage />} />
-                <Route path="/designs" element={<DesignPage />} />
-                <Route path="/tickets" element={<TicketPage />} />
+                {/* Panel Layout Routes */}
+                <Route path="/user-dashboard" element={<PanelLayout />}>
+                  <Route index element={<DashboardPage />} />
+                  <Route path="dashboard" element={<DashboardPage />} />
+                  <Route path="profile" element={<ProfilePage />} />
+                  <Route path="addressbook" element={<AddressBookPage />} />
+                  <Route path="orders" element={<OrderPage />} />
+                  <Route path="designs" element={<DesignPage />} />
+                  <Route path="tickets" element={<TicketPage />} />
+                </Route>
               </Routes>
             </div>
           </div>

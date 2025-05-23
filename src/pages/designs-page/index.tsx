@@ -1,5 +1,5 @@
 import './style.scss'
-import plusIcon from '../../assets/images/Create new designs.svg'
+import plusIcon from '../../assets/images/panel-images/Create new designs.svg'
 import Icons from '../../components/Icons'
 
 const DesignPage = () => {
