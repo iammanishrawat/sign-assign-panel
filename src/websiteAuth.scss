@@ -1,0 +1,228 @@
+.auth-inner {
+  display: flex;
+
+  .left-area {
+    background-position: bottom;
+    background-repeat: no-repeat;
+    background-color: #efefef;
+    padding: 40px;
+    flex: 1 1 50%;
+    max-width: 50%;
+    min-height: 600px;
+
+    h1 {
+      text-transform: uppercase;
+      font-weight: 900;
+      color: #452e73;
+      font-size: 2.5rem;
+    }
+
+    p {
+      margin: 0;
+      line-height: 1.354rem;
+      color: #555555;
+    }
+  }
+
+  &.signup {
+    .left-area {
+      background-image: url('./assets/images/panel-images/auth-images/Sign up.png');
+      background-size: 100%;
+    }
+  }
+
+  &.login {
+    .left-area {
+      background-image: url('./assets/images/panel-images/auth-images/Login.png');
+      background-size: 70%;
+    }
+  }
+
+  .right-area {
+    padding: 40px;
+    flex: 1 1 50%;
+    max-width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    p {
+      text-align: center;
+      margin-block: 1rem;
+
+      a {
+        text-decoration: none;
+        color: #df9229;
+        font-style: italic;
+      }
+    }
+
+    form {
+      .flex-inner {
+        display: flex;
+        gap: 0.5rem;
+        justify-content: flex-end;
+
+        a {
+          text-decoration: none;
+          font-weight: 500;
+
+          &:first-child {
+            color: #452e73;
+          }
+
+          &:last-child {
+            color: #df9229;
+          }
+        }
+      }
+
+      .form-group {
+        margin-bottom: 0.5rem;
+
+        .form-control,
+        .form-select {
+          border-radius: 4px;
+          border: 0;
+          background-color: #efefef;
+          height: 45px;
+          font-size: 0.854rem;
+          width: 100%;
+          padding: 0 10px;
+
+          &:focus {
+            box-shadow: none;
+            border: 0;
+          }
+        }
+
+        .form-select {
+          option {
+            display: flex;
+            gap: 0.5rem;
+          }
+        }
+
+        label {
+          font-size: 0.754rem;
+        }
+
+        input[type='checkbox'] {
+          accent-color: #df9229;
+          vertical-align: middle;
+        }
+
+        a.submit-btn {
+          background-color: #df9229;
+          color: #fff;
+          text-decoration: none;
+          width: 100%;
+          display: flex;
+          height: 45px;
+          align-items: center;
+          justify-content: center;
+          text-transform: uppercase;
+          cursor: pointer;
+        }
+
+        .flex-radiobtn {
+          display: flex;
+          gap: 1rem;
+          justify-content: flex-start;
+          margin-top: 0.554rem;
+
+          .form-check-label {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            cursor: pointer;
+
+            input[type='radio'] {
+              width: 1.5rem;
+              height: 1.5rem;
+              //   background-color: #df9229;
+              //   border-color: #df9229;
+              accent-color: #df9229;
+
+              &:focus {
+                box-shadow: none;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .sso-area {
+      p {
+        text-align: center;
+        position: relative;
+
+        &::before,
+        &::after {
+          content: '';
+          position: absolute;
+          height: 1px;
+          width: 30%;
+          top: 50%;
+          background-color: #555555;
+        }
+
+        &::before {
+          left: 0;
+        }
+
+        &::after {
+          right: 0;
+        }
+      }
+
+      .social-icons-inner {
+        display: flex;
+        gap: 0;
+        align-items: center;
+
+        a {
+          margin: 0 auto;
+          text-align: center;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          text-decoration: none;
+          color: inherit;
+          gap: 0.5rem;
+
+          img {
+            width: 35%;
+          }
+        }
+      }
+
+      .login-social-icons-inner {
+        display: flex;
+        gap: 0.5rem;
+        align-items: center;
+
+        a {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          flex-wrap: nowrap;
+          text-decoration: none;
+          color: inherit;
+          gap: 5px;
+          background-color: #f9f9f9;
+          height: 40px;
+          border-radius: 50px;
+          padding: 10px;
+          width: 100%;
+          justify-content: center;
+
+          img {
+            width: 25%;
+          }
+        }
+      }
+    }
+  }
+}

@@ -167,7 +167,7 @@ header {
 }
 
 .mega-menu {
-  background-color: #452e73;
+  background-color: var(--main-color);
   padding: 15px 0;
   position: sticky;
   top: 0;
@@ -175,7 +175,7 @@ header {
   transition: all ease 0.5s;
 
   .container-fluid {
-    max-width: 95%;
+    max-width: 90%;
   }
 
   ul {
@@ -524,7 +524,7 @@ header {
 @media only screen and (min-width: 20.063em) {
   .pure-drawer {
     width: 200px;
-    background-color: #452e73;
+    background-color: var(--main-color);
   }
 }
 
@@ -5170,7 +5170,7 @@ header {
        */
 .main-nav-mob {
   padding: 0;
-  background-color: #452e73;
+  background-color: var(--main-color);
 }
 
 .main-nav-mob .nav a,
