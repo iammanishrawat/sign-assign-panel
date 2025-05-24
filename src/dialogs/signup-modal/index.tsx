@@ -6,13 +6,13 @@ import facebookIcon from '../../assets/images/panel-images/auth-images/facebook.
 import googleIcon from '../../assets/images/panel-images/auth-images/google.png'
 import amazonIcon from '../../assets/images/panel-images/auth-images/social.png'
 
-export default function SignupModal({ isOpen, setIsOpen }: any) {
+export default function SignupModal({ isModalOpen, setIsModalOpen }: any) {
   return (
-    <Transition appear show={isOpen} as={Fragment}>
+    <Transition appear show={isModalOpen} as={Fragment}>
       <Dialog
         as="div"
         className="relative z-50"
-        onClose={() => setIsOpen(false)}
+        onClose={() => setIsModalOpen(false)}
       >
         <Transition.Child
           as={Fragment}

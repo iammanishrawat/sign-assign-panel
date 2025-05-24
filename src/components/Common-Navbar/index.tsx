@@ -11,7 +11,7 @@ import LoginModal from '../../dialogs/login-modal'
 
 const CommonNavbarComponent = () => {
   const [isOpen, setIsOpen] = useState(false)
-  // const [isOpen, setIsOpen] = useState(false)
+  const [isModalOpen, setIsModalOpen] = useState(false)
   return (
     <div>
       <header>
@@ -92,12 +92,15 @@ const CommonNavbarComponent = () => {
             <div className="auth-button" id="navbarAuthOptionsContainer">
               <Link
                 to="#"
-                onClick={() => setIsOpen(true)}
+                onClick={() => setIsModalOpen(true)}
                 className="signup-button"
               >
                 Sign up
               </Link>
-              <SignupModal isOpen={isOpen} setIsOpen={setIsOpen} />
+              <SignupModal
+                isModalOpen={isModalOpen}
+                setIsModalOpen={setIsModalOpen}
+              />
 
               <Link
                 to="#"
