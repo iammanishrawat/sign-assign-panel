@@ -5,8 +5,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faStar } from '@fortawesome/free-solid-svg-icons'
 import { faPhone } from '@fortawesome/free-solid-svg-icons'
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons'
+import SignupModal from '../../dialogs/signup-modal'
+import { useState } from 'react'
 
 const CommonNavbarComponent = () => {
+  const [isOpen, setIsOpen] = useState(false)
   return (
     <div>
       <header>
@@ -87,18 +90,13 @@ const CommonNavbarComponent = () => {
             <div className="auth-button" id="navbarAuthOptionsContainer">
               <Link
                 to="#"
+                onClick={() => setIsOpen(true)}
                 className="signup-button"
-                data-bs-toggle="modal"
-                data-bs-target="#signupModal"
               >
                 Sign up
               </Link>
-              <Link
-                to="#"
-                className="login-button"
-                data-bs-toggle="modal"
-                data-bs-target="#loginModal"
-              >
+              <SignupModal isOpen={isOpen} setIsOpen={setIsOpen} />
+              <Link to="#" className="login-button">
                 Login
               </Link>
             </div>
