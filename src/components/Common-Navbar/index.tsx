@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import './style.scss'
 import { Link } from 'react-router-dom'
 import logo from '../../assets/images/website-images/logo.png'
@@ -6,10 +7,11 @@ import { faStar } from '@fortawesome/free-solid-svg-icons'
 import { faPhone } from '@fortawesome/free-solid-svg-icons'
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons'
 import SignupModal from '../../dialogs/signup-modal'
-import { useState } from 'react'
+import LoginModal from '../../dialogs/login-modal'
 
 const CommonNavbarComponent = () => {
   const [isOpen, setIsOpen] = useState(false)
+  // const [isOpen, setIsOpen] = useState(false)
   return (
     <div>
       <header>
@@ -96,9 +98,15 @@ const CommonNavbarComponent = () => {
                 Sign up
               </Link>
               <SignupModal isOpen={isOpen} setIsOpen={setIsOpen} />
-              <Link to="#" className="login-button">
+
+              <Link
+                to="#"
+                onClick={() => setIsOpen(true)}
+                className="login-button"
+              >
                 Login
               </Link>
+              <LoginModal isOpen={isOpen} setIsOpen={setIsOpen} />
             </div>
           </div>
         </div>

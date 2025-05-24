@@ -1,7 +1,7 @@
 import { Dialog, Transition } from '@headlessui/react'
 import { Fragment } from 'react'
 import { Link } from 'react-router-dom'
-import '../../auth.scss'
+import '../../websiteAuth.scss'
 import facebookIcon from '../../assets/images/panel-images/auth-images/facebook.png'
 import googleIcon from '../../assets/images/panel-images/auth-images/google.png'
 import amazonIcon from '../../assets/images/panel-images/auth-images/social.png'
@@ -124,7 +124,7 @@ export default function SignupModal({ isOpen, setIsOpen }: any) {
                                 name="roleId"
                                 value="1"
                                 checked
-                              />{' '}
+                              />
                               Individual
                             </label>
                           </div>
@@ -135,7 +135,7 @@ export default function SignupModal({ isOpen, setIsOpen }: any) {
                                 type="radio"
                                 name="roleId"
                                 value="2"
-                              />{' '}
+                              />
                               Business
                             </label>
                           </div>
@@ -169,18 +169,18 @@ export default function SignupModal({ isOpen, setIsOpen }: any) {
                     <div className="sso-area mt-4">
                       <p>Or sign up with</p>
                       <div className="social-icons-inner">
-                        <a href="#">
+                        <Link to={'/'}>
                           <img src={facebookIcon} alt="" />
                           Facebook
-                        </a>
-                        <a href="#">
+                        </Link>
+                        <Link to={'/'}>
                           <img src={googleIcon} alt="" />
                           Google
-                        </a>
-                        <a href="#">
+                        </Link>
+                        <Link to={'/'}>
                           <img src={amazonIcon} alt="" />
                           Amazon
-                        </a>
+                        </Link>
                       </div>
                     </div>
 
