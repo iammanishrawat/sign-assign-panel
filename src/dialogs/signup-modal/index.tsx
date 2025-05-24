@@ -1,5 +1,5 @@
 import { Dialog, Transition } from '@headlessui/react'
-import { Fragment } from 'react'
+import { Fragment, useState } from 'react'
 import { Link } from 'react-router-dom'
 import '../../websiteAuth.scss'
 import facebookIcon from '../../assets/images/panel-images/auth-images/facebook.png'
@@ -7,6 +7,7 @@ import googleIcon from '../../assets/images/panel-images/auth-images/google.png'
 import amazonIcon from '../../assets/images/panel-images/auth-images/social.png'
 
 export default function SignupModal({ isModalOpen, setIsModalOpen }: any) {
+  const [selectedRole, setSelectedRole] = useState('1') // default to 'Individual'
   return (
     <Transition appear show={isModalOpen} as={Fragment}>
       <Dialog
@@ -123,7 +124,10 @@ export default function SignupModal({ isModalOpen, setIsModalOpen }: any) {
                                 type="radio"
                                 name="roleId"
                                 value="1"
-                                checked
+                                checked={selectedRole === '1'}
+                                onChange={(e) =>
+                                  setSelectedRole(e.target.value)
+                                }
                               />
                               Individual
                             </label>
@@ -135,21 +139,30 @@ export default function SignupModal({ isModalOpen, setIsModalOpen }: any) {
                                 type="radio"
                                 name="roleId"
                                 value="2"
+                                checked={selectedRole === '2'}
+                                onChange={(e) =>
+                                  setSelectedRole(e.target.value)
+                                }
                               />
                               Business
                             </label>
                           </div>
                         </div>
                       </div>
-                      <div id="businessDetailsContainer" className="form-group">
-                        <input
-                          type="text"
-                          id="businessName"
-                          name="businessName"
-                          className="form-control"
-                          placeholder="Business name"
-                        />
-                      </div>
+                      {selectedRole === '2' && (
+                        <div
+                          id="businessDetailsContainer"
+                          className="form-group"
+                        >
+                          <input
+                            type="text"
+                            id="businessName"
+                            name="businessName"
+                            className="form-control"
+                            placeholder="Business name"
+                          />
+                        </div>
+                      )}
                       <div className="form-group">
                         <label htmlFor="terms">
                           <input type="checkbox" id="terms" />
