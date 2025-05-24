@@ -26,16 +26,16 @@ const CommonNavbarComponent = () => {
           </div>
           <div className="contact-area">
             <div className="phone">
-              <a href="#">
+              <Link to="#">
                 <FontAwesomeIcon icon={faPhone} />
                 972-418-5253
-              </a>
+              </Link>
             </div>
             <div className="email">
-              <a href="#">
+              <Link to="#">
                 <FontAwesomeIcon icon={faEnvelope} />
                 orders@signassign.com
-              </a>
+              </Link>
             </div>
           </div>
         </div>
@@ -45,9 +45,9 @@ const CommonNavbarComponent = () => {
         <div className="desktop-top-menu">
           <div className="left-area">
             <div className="logo">
-              <a href="/">
+              <Link to="/">
                 <img src={logo} alt="Logo" />
-              </a>
+              </Link>
             </div>
           </div>
           <div className="right-area">
@@ -61,55 +61,55 @@ const CommonNavbarComponent = () => {
             <div className="menu-links">
               <ul>
                 <li>
-                  <a href="#">About Us</a>
+                  <Link to="#">About Us</Link>
                 </li>
                 <li className="dropdown">
-                  <a href="#">Service</a>
+                  <Link to="#">Service</Link>
                   <ul className="dropdown-content">
                     {Array.from({ length: 5 }).map((_, i) => (
                       <li className="dropdown-lists" key={i}>
-                        <a href="#">Sign Installation</a>
+                        <Link to="#">Sign Installation</Link>
                       </li>
                     ))}
                   </ul>
                 </li>
                 <li>
-                  <a href="#">Design Lab</a>
+                  <Link to="#">Design Lab</Link>
                 </li>
                 <li>
-                  <a href="#">Learning Center</a>
+                  <Link to="#">Learning Center</Link>
                 </li>
                 <li>
-                  <a href="#">Contact Us</a>
+                  <Link to="#">Contact Us</Link>
                 </li>
               </ul>
             </div>
             <div className="auth-button" id="navbarAuthOptionsContainer">
-              <a
-                href="#"
+              <Link
+                to="#"
                 className="signup-button"
                 data-bs-toggle="modal"
                 data-bs-target="#signupModal"
               >
                 Sign up
-              </a>
-              <a
-                href="#"
+              </Link>
+              <Link
+                to="#"
                 className="login-button"
                 data-bs-toggle="modal"
                 data-bs-target="#loginModal"
               >
                 Login
-              </a>
+              </Link>
             </div>
           </div>
         </div>
 
         <div className="mobile-top-menu">
           <div className="left">
-            <a href="/">
+            <Link to="/">
               <img src={logo} alt="Logo" />
-            </a>
+            </Link>
           </div>
           <div className="right">
             <div className="navbar-wrapper hidden-md hidden-lg visible-xs visible-sm">
@@ -140,7 +140,7 @@ const CommonNavbarComponent = () => {
                         <nav className="nav" role="navigation">
                           <ul className="nav__list">
                             <li>
-                              <a href="#"> About Us</a>
+                              <Link to="#">About Us</Link>
                             </li>
                             <li>
                               <input id="group-1" type="checkbox" hidden />
@@ -150,7 +150,7 @@ const CommonNavbarComponent = () => {
                                     className="fa fa-chevron-right"
                                     aria-hidden="true"
                                   ></i>
-                                </span>{' '}
+                                </span>
                                 Services
                               </label>
                               <ul className="group-list">
@@ -162,7 +162,6 @@ const CommonNavbarComponent = () => {
                                       hidden
                                     />
                                     <label htmlFor={`service-sub-group-${i}`}>
-                                      {' '}
                                       Sign Installation
                                     </label>
                                   </li>
@@ -177,7 +176,7 @@ const CommonNavbarComponent = () => {
                                     className="fa fa-chevron-right"
                                     aria-hidden="true"
                                   ></i>
-                                </span>{' '}
+                                </span>
                                 Products
                               </label>
                               <ul className="group-list">
@@ -206,13 +205,13 @@ const CommonNavbarComponent = () => {
                               </ul>
                             </li>
                             <li>
-                              <a href="#"> Design Lab</a>
+                              <Link to="#">Design Lab</Link>
                             </li>
                             <li>
-                              <a href="#"> Learning Center</a>
+                              <Link to="#">Learning Center</Link>
                             </li>
                             <li>
-                              <a href="#"> Contact Us</a>
+                              <Link to="#">Contact Us</Link>
                             </li>
                           </ul>
                         </nav>
