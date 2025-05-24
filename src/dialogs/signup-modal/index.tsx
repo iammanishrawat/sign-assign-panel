@@ -1,5 +1,10 @@
 import { Dialog, Transition } from '@headlessui/react'
 import { Fragment } from 'react'
+import { Link } from 'react-router-dom'
+import '../../auth.scss'
+import facebookIcon from '../../assets/images/panel-images/auth-images/facebook.png'
+import googleIcon from '../../assets/images/panel-images/auth-images/google.png'
+import amazonIcon from '../../assets/images/panel-images/auth-images/social.png'
 
 export default function SignupModal({ isOpen, setIsOpen }: any) {
   return (
@@ -33,129 +38,180 @@ export default function SignupModal({ isOpen, setIsOpen }: any) {
               leaveTo="opacity-0 scale-95"
             >
               <Dialog.Panel className="w-full max-w-4xl transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
-                <div className="flex flex-col lg:flex-row gap-6">
-                  {/* Left Area */}
-                  <div className="lg:w-1/2">
-                    <h1 className="text-2xl font-bold mb-2">Sign Up</h1>
-                    <p className="text-gray-600">
-                      Sign up today and enjoy 25% OFF your first purchase! Don’t
-                      miss out—this special offer won’t last forever!
+                <div className="auth-inner signup">
+                  <div className="left-area">
+                    <h1>Sign Up</h1>
+                    <p>
+                      Sign up today and enjoy 25% OFF your first purchase!
+                      Whether you're just getting started or looking to take
+                      things to the next level, this is the perfect time to jump
+                      in and save. Don’t miss out—this special offer won’t last
+                      forever!
                     </p>
                   </div>
 
-                  {/* Right Area - Signup Form */}
-                  <div className="lg:w-1/2">
-                    <form className="space-y-4">
-                      <div className="flex gap-2">
-                        <input
-                          type="text"
-                          placeholder="First Name"
-                          className="form-input w-1/2"
-                        />
-                        <input
-                          type="text"
-                          placeholder="Last Name"
-                          className="form-input w-1/2"
-                        />
-                      </div>
-                      <input
-                        type="email"
-                        placeholder="Email Address"
-                        className="form-input w-full"
-                      />
-
-                      <div className="flex gap-2">
-                        <select className="form-select w-1/4">
-                          <option>+91</option>
-                        </select>
-                        <input
-                          type="tel"
-                          placeholder="Mobile Number"
-                          className="form-input w-3/4"
-                        />
-                      </div>
-
-                      <div>
-                        <label className="text-sm font-medium">
-                          Register as -
-                        </label>
-                        <div className="flex gap-4 mt-1">
-                          <label className="flex items-center gap-1">
-                            <input
-                              type="radio"
-                              name="roleId"
-                              value="2"
-                              defaultChecked
-                            />
-                            Individual
-                          </label>
-                          <label className="flex items-center gap-1">
-                            <input type="radio" name="roleId" value="3" />
-                            Business
-                          </label>
+                  <div className="right-area" id="registerFormContainer">
+                    <form>
+                      <div className="form-group">
+                        <div className="flex-inner">
+                          <input
+                            type="text"
+                            className="form-control"
+                            id="firstName"
+                            name="firstName"
+                            placeholder="First Name"
+                          />
+                          <input
+                            type="text"
+                            className="form-control"
+                            id="lastName"
+                            name="lastName"
+                            placeholder="Last Name"
+                          />
                         </div>
                       </div>
-
-                      <input
-                        type="text"
-                        placeholder="Business Name"
-                        className="form-input w-full"
-                      />
-
-                      <label className="flex items-start gap-2 text-sm">
-                        <input type="checkbox" />
-                        <span>
-                          By agreeing, you'll receive offers via SMS, WhatsApp,
-                          or Email. You can opt out anytime.
-                        </span>
-                      </label>
-
-                      <button
-                        type="button"
-                        onClick={() => alert('Create Account')}
-                        className="w-full bg-blue-600 text-white py-2 rounded"
-                      >
-                        Create Account
-                      </button>
+                      <div className="form-group">
+                        <input
+                          type="email"
+                          className="form-control"
+                          id="email"
+                          name="email"
+                          placeholder="Email Address"
+                        />
+                      </div>
+                      <div className="form-group">
+                        <div className="flex-inner">
+                          <select
+                            name=""
+                            id=""
+                            className="form-select"
+                            style={{ flex: '1 1 25%' }}
+                          >
+                            <option value="">
+                              <div>
+                                <span>+91</span>
+                              </div>
+                            </option>
+                            <option value="">
+                              <div>
+                                <span>+91</span>
+                              </div>
+                            </option>
+                            <option value="">
+                              <div>
+                                <span>+91</span>
+                              </div>
+                            </option>
+                          </select>
+                          <input
+                            type="tel"
+                            className="form-control"
+                            style={{ flex: '1 1 75%' }}
+                            id="mobile"
+                            name="mobile"
+                            placeholder="Mobile Number"
+                          />
+                        </div>
+                      </div>
+                      <div className="form-group">
+                        <label className="form-label">Register as -</label>
+                        <div className="flex-radiobtn">
+                          <div className="form-check">
+                            <label className="form-check-label">
+                              <input
+                                className="form-check-input"
+                                type="radio"
+                                name="roleId"
+                                value="1"
+                                checked
+                              />{' '}
+                              Individual
+                            </label>
+                          </div>
+                          <div className="form-check">
+                            <label className="form-check-label">
+                              <input
+                                className="form-check-input"
+                                type="radio"
+                                name="roleId"
+                                value="2"
+                              />{' '}
+                              Business
+                            </label>
+                          </div>
+                        </div>
+                      </div>
+                      <div id="businessDetailsContainer" className="form-group">
+                        <input
+                          type="text"
+                          id="businessName"
+                          name="businessName"
+                          className="form-control"
+                          placeholder="Business name"
+                        />
+                      </div>
+                      <div className="form-group">
+                        <label htmlFor="terms">
+                          <input type="checkbox" id="terms" />
+                          By agreeing, you'll receive the latest promotional
+                          offers, updates, and creative ideas from us via SMS,
+                          WhatsApp, or Email. You can opt out anytime you wish
+                          to.
+                        </label>
+                      </div>
+                      <div className="form-group mt-3">
+                        <Link to={'/'} className="submit-btn">
+                          Create Account
+                        </Link>
+                      </div>
                     </form>
 
-                    {/* SSO Section */}
-                    <div className="mt-6">
-                      <p className="text-center mb-3">Or sign up with</p>
-                      <div className="flex justify-center gap-4">
-                        {['facebook', 'google', 'social'].map((name, i) => (
-                          <button
-                            key={i}
-                            className="flex flex-col items-center text-sm"
-                          >
-                            <img
-                              src={`/images/login-page/${name}.png`}
-                              alt={name}
-                              className="w-8 h-8 mb-1"
-                            />
-                            {name.charAt(0).toUpperCase() + name.slice(1)}
-                          </button>
-                        ))}
+                    <div className="sso-area mt-4">
+                      <p>Or sign up with</p>
+                      <div className="social-icons-inner">
+                        <a href="#">
+                          <img src={facebookIcon} alt="" />
+                          Facebook
+                        </a>
+                        <a href="#">
+                          <img src={googleIcon} alt="" />
+                          Google
+                        </a>
+                        <a href="#">
+                          <img src={amazonIcon} alt="" />
+                          Amazon
+                        </a>
                       </div>
                     </div>
 
-                    <p className="text-sm text-center mt-4">
-                      Already have an account?{' '}
-                      <a href="#" className="text-blue-500 underline">
-                        Log in
-                      </a>
+                    <p>
+                      Already have an account? <a href="#">Log in</a>
                     </p>
-                    <p className="text-xs text-center mt-1">
-                      Read Our{' '}
-                      <a href="#" className="underline">
-                        Terms And Conditions
-                      </a>{' '}
-                      And{' '}
-                      <a href="#" className="underline">
-                        Privacy Policy
-                      </a>
+                    <p>
+                      Read Our <a href="#">Terms And Conditions</a> And{' '}
+                      <a href="#">Privacy Policy</a>
                     </p>
                   </div>
+
+                  {/* <div className="right-area" id="verifyAndSetPasswordContainer" style="display: none;">
+                        <form>
+                            <div className="form-group">
+                                <input type="text" className="form-control" id="otp" name="otp" placeholder="OTP">
+                            </div>
+                            <div className="form-group">
+                                <input type="password" className="form-control" id="password" name="password" placeholder="Password">
+                            </div>
+                            <div className="form-group">
+                                <input type="password" className="form-control" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password">
+                            </div>
+                            <div className="form-group mt-3">
+                                <a onclick="resendOTP()" className="submit-btn">Resend OTP</a>
+                            </div>
+                            <div className="form-group mt-3">
+                                <a onclick="verifyAndSetPassword()" className="submit-btn">Complete Setup</a>
+                            </div>
+                        </form>
+                    </div> */}
                 </div>
               </Dialog.Panel>
             </Transition.Child>
