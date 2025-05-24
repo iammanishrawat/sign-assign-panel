@@ -1,5 +1,6 @@
 import footerLogo from '../../assets/images/website-images/footer-logo.png'
 import './style.scss'
+import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPhoneVolume } from '@fortawesome/free-solid-svg-icons'
 import { faEnvelopeOpen } from '@fortawesome/free-regular-svg-icons'
@@ -38,19 +39,19 @@ const CommonFooterComponent = () => {
               </h6>
               <ul>
                 <li>
-                  <a href="#">
+                  <Link to="#">
                     <FontAwesomeIcon icon={faFacebook} />
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="#">
+                  <Link to="#">
                     <FontAwesomeIcon icon={faLinkedin} />
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="#">
+                  <Link to="#">
                     <FontAwesomeIcon icon={faSquareInstagram} />
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -75,10 +76,10 @@ const CommonFooterComponent = () => {
                   'Banner for a Cause',
                 ].map((item, i) => (
                   <li key={i}>
-                    <a href="#">
+                    <Link to="#">
                       <FontAwesomeIcon icon={faArrowRight} />
                       <span>{item}</span>
-                    </a>
+                    </Link>
                   </li>
                 ))}
               </ul>
@@ -96,10 +97,10 @@ const CommonFooterComponent = () => {
                   'Areas of Service',
                 ].map((item, i) => (
                   <li key={i}>
-                    <a href="#">
+                    <Link to="#">
                       <FontAwesomeIcon icon={faArrowRight} />
                       <span>{item}</span>
-                    </a>
+                    </Link>
                   </li>
                 ))}
               </ul>
@@ -119,10 +120,10 @@ const CommonFooterComponent = () => {
                   'Business Inquiries',
                 ].map((item, i) => (
                   <li key={i}>
-                    <a href="#">
+                    <Link to="#">
                       <FontAwesomeIcon icon={faArrowRight} />
                       <span>{item}</span>
-                    </a>
+                    </Link>
                   </li>
                 ))}
               </ul>

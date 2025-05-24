@@ -1,4 +1,5 @@
 import './style.scss'
+import { Link } from 'react-router-dom'
 import logo from '../../assets/images/website-images/logo.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faStar } from '@fortawesome/free-solid-svg-icons'
@@ -230,20 +231,21 @@ const CommonNavbarComponent = () => {
         <div className="container-fluid">
           <ul id="navbarCategoryMenuListContainer">
             <li className="dropdown">
-              <a href="/category/banner">Banner</a>
+              <Link to="/category/banner">Banner</Link>
               <ul className="dropdown-content">
                 <li className="dropdown-lists">
-                  <a href="/subcategory/vinyl-banner">Vinyl Banner</a>
+                  <Link to="/subcategory/vinyl-banner">Vinyl Banner</Link>
                 </li>
               </ul>
             </li>
+
             <li className="dropdown">
-              <a href="/category/window-products">Window Products</a>
+              <Link to="/category/window-products">Window Products</Link>
               <ul className="dropdown-content">
                 <li className="dropdown-lists">
-                  <a href="/subcategory/vinyl-window-decals">
+                  <Link to="/subcategory/vinyl-window-decals">
                     Vinyl Window Decals
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </li>

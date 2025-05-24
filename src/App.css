@@ -22,7 +22,7 @@ body {
     font-family: "Onest", sans-serif;
 }
 
-.container-fluid {
+/* .container-fluid {
     max-width: 95%;
     margin: 0 auto;
 }
@@ -30,7 +30,7 @@ body {
 input::placeholder {
     font-size: 0.854rem;
     font-weight: 500;
-}
+} */
 
 .main {
     min-height: 100vh;
