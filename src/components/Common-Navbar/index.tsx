@@ -1,5 +1,5 @@
 import './style.scss'
-import logo from '../../assets/images/images/logo.png'
+import logo from '../../assets/images/website-images/logo.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faStar } from '@fortawesome/free-solid-svg-icons'
 import { faPhone } from '@fortawesome/free-solid-svg-icons'

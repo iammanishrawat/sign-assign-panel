@@ -1,11 +1,11 @@
 import { Link, useLocation } from 'react-router-dom'
 import './style.scss'
-import dashboardIcon from '../../assets/images/Dashboard.svg'
-import profileIcon from '../../assets/images/Profile.svg'
-import addressBookIcon from '../../assets/images/Address Book.svg'
-import orderIcon from '../../assets/images/Orders.svg'
-import designIcon from '../../assets/images/Designs.svg'
-import ticketIcon from '../../assets/images/Tickets.svg'
+import dashboardIcon from '../../assets/images/panel-images/Dashboard.svg'
+import profileIcon from '../../assets/images/panel-images/Profile.svg'
+import addressBookIcon from '../../assets/images/panel-images/Address Book.svg'
+import orderIcon from '../../assets/images/panel-images/Orders.svg'
+import designIcon from '../../assets/images/panel-images/Designs.svg'
+import ticketIcon from '../../assets/images/panel-images/Tickets.svg'
 const SidebarComponent = () => {
   const location = useLocation()
 

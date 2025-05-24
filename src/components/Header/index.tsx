@@ -1,5 +1,5 @@
-import profileIcon from '../../assets/images/Profile Image.svg'
-import logoutIcon from '../../assets/images/Logout.svg'
+import profileIcon from '../../assets/images/panel-images/Profile Image.svg'
+import logoutIcon from '../../assets/images/panel-images/Logout.svg'
 import './style.scss'
 const HeaderComponent = () => {
     return (

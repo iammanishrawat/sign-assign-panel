@@ -1,4 +1,4 @@
-import footerLogo from '../../assets/images/images/footer-logo.png'
+import footerLogo from '../../assets/images/website-images/footer-logo.png'
 import './style.scss'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPhoneVolume } from '@fortawesome/free-solid-svg-icons'

@@ -1,8 +1,8 @@
 import './style.scss'
 import { useState } from 'react'
-import userIcon from '../../assets/images/My Profile.svg'
-import user2Icon from '../../assets/images/My Profile_1.svg'
-import passwordIcon from '../../assets/images/Change My Password.svg'
+import userIcon from '../../assets/images/panel-images/My Profile.svg'
+import user2Icon from '../../assets/images/panel-images/My Profile_1.svg'
+import passwordIcon from '../../assets/images/panel-images/Change My Password.svg'
 import Icons from '../../components/Icons'
 const ProfilePage = () => {
   const [activeTab, setActiveTab] = useState('profile') // 'profile' or 'password'
