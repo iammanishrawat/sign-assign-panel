@@ -10,6 +10,7 @@ import {
   faStar,
 } from '@fortawesome/free-solid-svg-icons'
 import './style.scss'
+import { Link } from 'react-router-dom'
 
 interface Slide {
   id: number
@@ -114,7 +115,7 @@ const WebHomePage = () => {
             {[1, 2, 3, 4, 5, 6, 7, 8].map((item) => (
               <SwiperSlide key={item}>
                 <div className="inner-card">
-                  <a href="/product/anniversary-banners">
+                  <Link to={'/product/anniversary-banners'}>
                     <div className="p-3 m-0">
                       <img
                         src="http://3.109.198.252/images/logo.png"
@@ -124,16 +125,20 @@ const WebHomePage = () => {
                     </div>
                     <div className="px-3 mt-0">
                       <h5>Anniversary Banners</h5>
-                      <div className="rating-area flex gap-1 mt-1 text-yellow-400">
+                      <div className="rating-area">
                         {[...Array(5)].map((_, i) => (
-                          <FontAwesomeIcon key={i} icon={faStar} />
+                          <FontAwesomeIcon
+                            key={i}
+                            icon={faStar}
+                            className="checked"
+                          />
                         ))}
                       </div>
                       <h6>
                         Starts at: <span className="text-green">-</span>
                       </h6>
                     </div>
-                  </a>
+                  </Link>
                   <a
                     href="http://3.109.198.252/editor"
                     target="_blank"
