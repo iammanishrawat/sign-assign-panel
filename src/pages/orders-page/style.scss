@@ -20,8 +20,14 @@
         align-items: center;
         justify-content: space-between;
         margin-bottom: 1rem;
+        flex-wrap: wrap;
+        gap: 1rem;
         .right-area {
           display: flex;
+          @media (max-width: 660px) {
+            flex-wrap: wrap;
+            width: 100%;
+          }
           gap: 1rem;
           button {
             border: 1px solid var(--border-color);
@@ -30,6 +36,7 @@
             color: var(--subtext-color);
             cursor: pointer;
             font-size: 0.854rem;
+            width: 100%;
             &.delivered-btn {
               background-color: var(--green-bg);
               color: var(--green-color);
@@ -55,13 +62,26 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
+        @media (max-width: 660px) {
+          flex-wrap: wrap;
+          gap: 2rem;
+        }
         .left-area {
           display: flex;
           align-items: center;
           gap: 3rem;
+          @media (max-width: 767px) {
+            gap: 1rem;
+          }
+          @media (max-width: 660px) {
+            flex-wrap: wrap;
+          }
           img {
             width: 50%;
             border-radius: 0.554rem;
+            @media (max-width: 480px) {
+              width: 100%;
+            }
           }
           h5 {
             font-size: 1.125rem;
@@ -89,6 +109,13 @@
           flex-direction: column;
           gap: 1.5rem;
           align-items: flex-end;
+          flex-wrap: wrap;
+          @media (max-width: 660px) {
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+          }
           button {
             background-color: var(--highlighted-color);
             border-radius: 0.554rem;
