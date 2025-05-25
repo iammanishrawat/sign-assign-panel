@@ -106,6 +106,9 @@ form {
   .sidebar-area {
     flex: 1 1 15%;
     max-width: 15%;
+    @media (max-width: 991px) {
+      display: none;
+    }
   }
   .main-area {
     flex: 1 1 85%;
@@ -113,6 +116,10 @@ form {
     background-color: var(--secondary-color);
     border-radius: 0.554rem;
     overflow: auto;
+    @media (max-width: 991px) {
+      flex: 1 1 100%;
+      max-width: 100%;
+    }
     .common-area {
       background-color: var(--white-color);
       margin: 1rem;
