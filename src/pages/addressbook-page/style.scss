@@ -3,7 +3,9 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
     margin-bottom: 2rem;
+    gap: 1rem;
     h6 {
       color: var(--text-color);
       font-size: 1.254rem;
