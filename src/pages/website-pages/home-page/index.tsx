@@ -729,6 +729,56 @@ const WebHomePage = () => {
               ))}
             </Swiper>
           </div>
+          <div className="view-all-btn-area">
+            <Link to={'/'}>
+              View All <FontAwesomeIcon icon={faArrowRightLong} />
+            </Link>
+          </div>
+        </div>
+      </div>
+
+      <div className="form-area py-10">
+        <div className="container-fluid">
+          <div className="form-inner-area">
+            <div className="text-area">
+              <h4 className="mb-3">Trade Partners Can Get Up to 30% Off!</h4>
+              <p>
+                We are offering exclusive discounts for trade partners. All you
+                need to do is provide us with your name and email, we'll ask for
+                some further details and upon confirmation you can enjoy up to
+                30% discount on your orders!
+              </p>
+            </div>
+            <div className="form-card">
+              <form action="#">
+                <div className="form-group">
+                  <input
+                    type="name"
+                    placeholder="First Name"
+                    className="form-control"
+                    required={true}
+                  />
+                </div>
+                <div className="form-group">
+                  <input
+                    type="name"
+                    placeholder="Last Name"
+                    className="form-control"
+                    required={true}
+                  />
+                </div>
+                <div className="form-group">
+                  <input
+                    type="email"
+                    placeholder="Email Address"
+                    className="form-control"
+                    required={true}
+                  />
+                </div>
+                <a href="#">Submit Now</a>
+              </form>
+            </div>
+          </div>
         </div>
       </div>
     </>
