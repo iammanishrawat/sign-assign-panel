@@ -657,6 +657,80 @@ const WebHomePage = () => {
           </div>
         </div>
       </div>
+
+      <div className="blog-area py-10">
+        <div className="container-fluid">
+          <h6>The Ultimate Signage Guide</h6>
+          <h3>Learning Center</h3>
+
+          <div className="relative w-full">
+            {/* Navigation Buttons */}
+            <button
+              ref={prevRef}
+              className="absolute -left-3.5 top-1/2 z-10 -translate-y-1/2"
+            >
+              <FontAwesomeIcon icon={faArrowLeftLong} />
+            </button>
+            <button
+              ref={nextRef}
+              className="absolute -right-3.5 top-1/2 z-10 -translate-y-1/2"
+            >
+              <FontAwesomeIcon icon={faArrowRightLong} />
+            </button>
+            <Swiper
+              modules={[Navigation]}
+              spaceBetween={30}
+              loop={true}
+              navigation={{
+                prevEl: prevRef.current!,
+                nextEl: nextRef.current!,
+              }}
+              onBeforeInit={(swiper) => {
+                // @ts-ignore: nextEl and prevEl will be initialized by Swiper later
+                swiper.params.navigation.prevEl = prevRef.current
+                // @ts-ignore
+                swiper.params.navigation.nextEl = nextRef.current
+              }}
+              breakpoints={{
+                320: { slidesPerView: 1 },
+                640: { slidesPerView: 2 },
+                1024: { slidesPerView: 3 },
+              }}
+            >
+              {[1, 2, 3, 4, 5, 6, 7, 8].map((item) => (
+                <SwiperSlide key={item}>
+                  <div className="inner-card">
+                    <div className="p-3 m-0">
+                      <img
+                        src="http://3.109.198.252/images/slide-image.jpg?t=1748195990"
+                        alt=""
+                      />
+                    </div>
+                    <div className="px-3 mt-0">
+                      <h6>by signassi | Nov 11, 2024 | Signage</h6>
+                      <h5>
+                        How Festive Thanksgiving Signage Can Enhance Your
+                        Business Atmo
+                      </h5>
+                      <p>
+                        Thanksgiving is a cherished holiday in the U.S., full of
+                        warmth, gratitude, and togetherness. For businesses,
+                        it’s the perfect season to create an...
+                      </p>
+                      <a href="#">
+                        Read More{' '}
+                        <span>
+                          <i className="fa-solid fa-arrow-right-long"></i>
+                        </span>
+                      </a>
+                    </div>
+                  </div>
+                </SwiperSlide>
+              ))}
+            </Swiper>
+          </div>
+        </div>
+      </div>
     </>
   )
 }
