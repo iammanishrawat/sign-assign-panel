@@ -31,28 +31,3 @@ input::placeholder {
     font-size: 0.854rem;
     font-weight: 500;
 } */
-
-.main {
-    min-height: 100vh;
-    max-height: 100%;
-}
-
-.sidebar-area {
-    flex: 1 1 13%;
-    max-width: 13%;
-}
-
-.main-area {
-    flex: 1 1 87%;
-    max-width: 87%;
-    background-color: var(--secondary-color);
-    border-radius: 0.554rem;
-    overflow: auto;
-}
-
-.common-area {
-    background-color: var(--white-color);
-    margin: 1rem;
-    padding: 2rem;
-    border-radius: 0.554rem;
-}

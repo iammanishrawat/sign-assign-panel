@@ -3,6 +3,11 @@
     display: grid;
     grid-template-columns: repeat(1, 1fr);
     gap: 1rem;
+    h6 {
+      color: var(--text-color);
+      font-size: 1.254rem;
+      font-weight: 600;
+    }
     .inner {
       background-color: var(--secondary-color);
       padding: 2rem;

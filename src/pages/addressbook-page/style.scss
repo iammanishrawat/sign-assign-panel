@@ -1,39 +1,43 @@
-.add-address-area {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 2rem;
-  h6 {
-    color: var(--subtext-color);
-  }
-  button {
+.common-area {
+  .add-address-area {
     display: flex;
-    background-color: var(--highlighted-color);
-    border-radius: 0.554rem;
-    padding: 0.854rem 2.5rem;
-    color: var(--white-color);
-    cursor: pointer;
-    font-size: 0.854rem;
-  }
-}
-
-.address-card {
-  display: grid;
-  grid-template-columns: repeat(1, 1fr);
-  gap: 1.5rem;
-  .inner {
-    background-color: var(--secondary-color);
-    padding: 2rem;
-    border-radius: 0.554rem;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
     h6 {
       color: var(--text-color);
-      font-weight: 500;
+      font-size: 1.254rem;
+      font-weight: 600;
     }
-    p {
-      color: var(--text-color);
-      margin-block: 0.5rem;
-      span {
-        color: var(--subtext-color);
+    button {
+      display: flex;
+      background-color: var(--highlighted-color);
+      border-radius: 0.554rem;
+      padding: 0.854rem 2.5rem;
+      color: var(--white-color);
+      cursor: pointer;
+      font-size: 0.854rem;
+    }
+  }
+
+  .address-card {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 1.5rem;
+    .inner {
+      background-color: var(--secondary-color);
+      padding: 2rem;
+      border-radius: 0.554rem;
+      h6 {
+        color: var(--text-color);
+        font-weight: 500;
+      }
+      p {
+        color: var(--text-color);
+        margin-block: 0.5rem;
+        span {
+          color: var(--subtext-color);
+        }
       }
     }
   }

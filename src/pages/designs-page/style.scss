@@ -1,53 +1,60 @@
-.design-list-area {
-  .create-design-area {
-    margin-top: 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: var(--highlighted-color);
-    border-radius: 0.554rem;
-    padding: 1rem;
-    p {
-      color: var(--white-color);
+.common-area {
+  .design-list-area {
+    h6 {
+      color: var(--text-color);
+      font-size: 1.254rem;
       font-weight: 600;
     }
-    img {
-      width: 30px;
-    }
-  }
-  .design-card {
-    margin-top: 2rem;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-    .inner {
-      position: relative;
-      img {
-        width: 100%;
-        border-radius: 0.554rem;
+    .create-design-area {
+      margin-top: 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: var(--highlighted-color);
+      border-radius: 0.554rem;
+      padding: 1rem;
+      p {
+        color: var(--white-color);
+        font-weight: 600;
       }
-      .inner-button-area {
-        position: absolute;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        bottom: 0;
-        width: 90%;
-        background-color: var(--white-color);
-        padding: 1rem;
-        margin: 5%;
-        border-radius: 0.554rem;
-        cursor: pointer;
-        h6 {
-          color: var(--text-color);
-          font-weight: 600;
-          font-size: 0.954rem;
+      img {
+        width: 30px;
+      }
+    }
+    .design-card {
+      margin-top: 2rem;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      .inner {
+        position: relative;
+        img {
+          width: 100%;
+          border-radius: 0.554rem;
         }
-        svg {
-          color: var(--highlighted-color);
-          font-weight: 600;
-          width: 1.5rem;
-          height: 1.5rem;
+        .inner-button-area {
+          position: absolute;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          bottom: 0;
+          width: 90%;
+          background-color: var(--white-color);
+          padding: 1rem;
+          margin: 5%;
+          border-radius: 0.554rem;
+          cursor: pointer;
+          h6 {
+            color: var(--text-color);
+            font-weight: 600;
+            font-size: 0.954rem;
+          }
+          svg {
+            color: var(--highlighted-color);
+            font-weight: 600;
+            width: 1.5rem;
+            height: 1.5rem;
+          }
         }
       }
     }

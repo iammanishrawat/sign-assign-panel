@@ -3,8 +3,8 @@ import './style.scss'
 const TicketPage = () => {
   return (
     <>
-      <div>
-        <h5>Help & Support</h5>
+      <div className="help-image-area">
+        <h6>Help & Support</h6>
         <img
           src={ticketImage}
           alt=""

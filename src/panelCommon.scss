@@ -57,6 +57,13 @@ form {
     label {
       font-size: 0.854rem;
       color: var(--text-color);
+      display: flex;
+      align-items: flex-start;
+      span {
+        color: var(--highlighted-color);
+        font-size: 2rem;
+        line-height: 2rem;
+      }
 
       input[type='checkbox'] {
         width: 15px;
@@ -89,6 +96,28 @@ form {
       display: flex;
       align-items: center;
       gap: 0.5rem;
+    }
+  }
+}
+
+.main {
+  min-height: 100vh;
+  max-height: 100%;
+  .sidebar-area {
+    flex: 1 1 15%;
+    max-width: 15%;
+  }
+  .main-area {
+    flex: 1 1 85%;
+    max-width: 85%;
+    background-color: var(--secondary-color);
+    border-radius: 0.554rem;
+    overflow: auto;
+    .common-area {
+      background-color: var(--white-color);
+      margin: 1rem;
+      padding: 2rem;
+      border-radius: 0.554rem;
     }
   }
 }
