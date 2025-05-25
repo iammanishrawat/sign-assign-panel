@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import './style.scss'
-import Icons from '../../components/Icons'
+import Icons from '../../../components/Icons'
 import {
   Dialog,
   DialogBackdrop,
