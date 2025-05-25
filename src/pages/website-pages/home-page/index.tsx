@@ -586,6 +586,77 @@ const WebHomePage = () => {
           </div>
         </div>
       </div>
+
+      <div className="testimonial-area pt-10">
+        <div className="container-fluid">
+          <h6>Testimonials</h6>
+          <h3>Approved By Thousands of Happy Customers</h3>
+
+          <div className="relative w-full">
+            {/* Navigation Buttons */}
+            <button
+              ref={prevRef}
+              className="absolute -left-3.5 top-1/2 z-10 -translate-y-1/2"
+            >
+              <FontAwesomeIcon icon={faArrowLeftLong} />
+            </button>
+            <button
+              ref={nextRef}
+              className="absolute -right-3.5 top-1/2 z-10 -translate-y-1/2"
+            >
+              <FontAwesomeIcon icon={faArrowRightLong} />
+            </button>
+            <Swiper
+              modules={[Navigation]}
+              // spaceBetween={0}
+              loop={true}
+              slidesPerView={1}
+              navigation={{
+                prevEl: prevRef.current!,
+                nextEl: nextRef.current!,
+              }}
+              onBeforeInit={(swiper) => {
+                // @ts-ignore: nextEl and prevEl will be initialized by Swiper later
+                swiper.params.navigation.prevEl = prevRef.current
+                // @ts-ignore
+                swiper.params.navigation.nextEl = nextRef.current
+              }}
+            >
+              {[1, 2, 3, 4, 5, 6, 7, 8].map((item) => (
+                <SwiperSlide key={item}>
+                  <div className="testimonial-card">
+                    <p>
+                      If you are looking for an excellent sign company at an
+                      affordable price, I highly recommend Sign Assign. They are
+                      creative and extremely knowledgeable about all aspects of
+                      sign design, installation, approval requirements and
+                      process. They even negotiated on our behalf with the
+                      shopping center's property manager for their agreement to
+                      a design giving us optimum visibility. In addition, They
+                      secured approval from the City of Carrollton in a timely
+                      manner resulting in ample time for installation. Sign
+                      Assign is a reliable, patient, helpful and affordable
+                      resource.
+                    </p>
+                    <div className="testimonial-details-area">
+                      <div className="name-area">
+                        <h6>Vetsavers Pet Hospital Carrollton, TX</h6>
+                      </div>
+                      <div className="rating-area">
+                        <FontAwesomeIcon icon={faStar} className="checked" />
+                        <FontAwesomeIcon icon={faStar} className="checked" />
+                        <FontAwesomeIcon icon={faStar} className="checked" />
+                        <FontAwesomeIcon icon={faStar} className="checked" />
+                        <FontAwesomeIcon icon={faStar} className="checked" />
+                      </div>
+                    </div>
+                  </div>
+                </SwiperSlide>
+              ))}
+            </Swiper>
+          </div>
+        </div>
+      </div>
     </>
   )
 }

@@ -70,6 +70,11 @@
       color: #8b8b8b;
       font-weight: 400;
     }
+
+    &:hover a {
+      background-color: #277e30;
+      cursor: pointer;
+    }
   }
 
   .business-card {
@@ -266,6 +271,68 @@
     text-transform: capitalize;
   }
 
+  button {
+    background-color: var(--main-color);
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+    border: 0;
+    cursor: pointer;
+    svg {
+      color: var(--white-color);
+    }
+  }
+
+  .testimonial-card {
+    background-color: #edeaf2;
+    padding: 50px 50px 50px 150px;
+    border-radius: 10px;
+    margin-top: 0;
+    position: relative;
+
+    &::after {
+      content: '';
+      background-image: url('http://3.109.198.252/images/quote-icon.png');
+      position: absolute;
+      left: 50px;
+      top: 50px;
+      width: 50px;
+      height: 50px;
+      z-index: 99;
+      background-size: 100%;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    .testimonial-details-area {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-top: 1rem;
+      .name-area {
+        max-width: 20%;
+        position: relative;
+
+        &::before {
+          content: '';
+          width: 4px;
+          height: 100%;
+          background-color: green;
+          position: absolute;
+          left: 0;
+        }
+
+        h6 {
+          text-align: left;
+          margin-bottom: 0;
+          margin-left: 10px;
+          font-weight: 800;
+          line-height: normal;
+        }
+      }
+    }
+  }
+
   .owl-carousel {
     position: relative;
 
@@ -304,56 +371,6 @@
         img {
           width: 40%;
           color: #fff;
-        }
-      }
-    }
-
-    .testimonial-card {
-      background-color: #edeaf2;
-      padding: 50px 50px 50px 150px;
-      border-radius: 10px;
-      margin-top: 0;
-      position: relative;
-
-      &::after {
-        content: '';
-        background-image: url('../images/quote-icon.png');
-        position: absolute;
-        left: 50px;
-        top: 50px;
-        width: 50px;
-        height: 50px;
-        z-index: 99;
-        background-size: 100%;
-        background-position: center;
-        background-repeat: no-repeat;
-      }
-
-      .testimonial-details-area {
-        display: flex;
-        align-items: flex-end;
-        justify-content: space-between;
-
-        .name-area {
-          max-width: 20%;
-          position: relative;
-
-          &::before {
-            content: '';
-            width: 4px;
-            height: 100%;
-            background-color: green;
-            position: absolute;
-            left: 0;
-          }
-
-          h6 {
-            text-align: left;
-            margin-bottom: 0;
-            margin-left: 10px;
-            font-weight: 800;
-            line-height: normal;
-          }
         }
       }
     }
