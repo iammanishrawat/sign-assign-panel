@@ -5,6 +5,15 @@ body {
   font-size: 0.854rem;
 }
 
+// h1,
+// h2,
+// h3,
+// h4,
+// h5,
+// h6 {
+//   margin: 0;
+// }
+
 h3 {
   font-size: calc(16px + 1vw);
 }
@@ -100,7 +109,7 @@ input::placeholder {
       font-size: 1rem;
     }
 
-    .owl-nav {
+    .slider-nav {
       gap: 1rem;
       display: flex;
 
@@ -110,9 +119,10 @@ input::placeholder {
         height: 50px;
         border-radius: 50px;
         border: 0;
+        cursor: pointer;
 
-        &.owl-prev:disabled,
-        &.owl-next:disabled {
+        &.slider-prev:disabled,
+        &.slider-next:disabled {
           background: #aaa;
           cursor: not-allowed;
           opacity: 0.6;
