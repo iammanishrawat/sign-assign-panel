@@ -1,13 +1,13 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import DashboardPage from './pages/dashboard-page'
-import ProfilePage from './pages/profile-page'
-import AddressBookPage from './pages/addressbook-page'
-import TicketPage from './pages/tickets-page'
-import OrderPage from './pages/orders-page'
-import DesignPage from './pages/designs-page'
+import DashboardPage from './pages/panel-pages/dashboard-page'
+import ProfilePage from './pages/panel-pages/profile-page'
+import AddressBookPage from './pages/panel-pages/addressbook-page'
+import TicketPage from './pages/panel-pages/tickets-page'
+import OrderPage from './pages/panel-pages/orders-page'
+import DesignPage from './pages/panel-pages/designs-page'
 import PanelLayout from './layouts/panelLayout'
 import WebsiteLayout from './layouts/websiteLayout'
-import WebHomePage from './pages/web-homepage'
+import WebHomePage from './pages/website-pages/home-page'
 
 const App = () => {
   return (

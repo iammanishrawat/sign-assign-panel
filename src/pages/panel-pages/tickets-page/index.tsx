@@ -1,4 +1,4 @@
-import ticketImage from '../../assets/images/panel-images/Help & Supports.svg'
+import ticketImage from '../../../assets/images/panel-images/Help & Supports.svg'
 import './style.scss'
 const TicketPage = () => {
   return (

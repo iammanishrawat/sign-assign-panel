@@ -1,20 +1,23 @@
 import './style.scss'
-import plusIcon from '../../assets/images/panel-images/Create new designs.svg'
-import Icons from '../../components/Icons'
+import plusIcon from '../../../assets/images/panel-images/Create new designs.svg'
+import Icons from '../../../components/Icons'
 
 const DesignPage = () => {
   const onClickCreateNewDesign = () => {
-    window.open('http://3.109.198.252/editor/', '_blank');
+    window.open('http://3.109.198.252/editor/', '_blank')
   }
 
   const onClickEditDesign = () => {
-    window.open('http://3.109.198.252/editor/', '_blank');
+    window.open('http://3.109.198.252/editor/', '_blank')
   }
 
   return (
     <div className="design-list-area">
       <h6>My Designs</h6>
-      <div className="create-design-area" onClick={() => onClickCreateNewDesign()}>
+      <div
+        className="create-design-area"
+        onClick={() => onClickCreateNewDesign()}
+      >
         <p>Create new designs</p>
         <img src={plusIcon} alt="" />
       </div>

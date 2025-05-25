@@ -1,6 +1,6 @@
-import Icons from '../../components/Icons'
-import visaIcon from '../../assets/images/panel-images/visa.svg'
-import ratingIcon from '../../assets/images/panel-images/Rating.svg'
+import Icons from '../../../components/Icons'
+import visaIcon from '../../../assets/images/panel-images/visa.svg'
+import ratingIcon from '../../../assets/images/panel-images/Rating.svg'
 import './style.scss'
 import { useState } from 'react'
 
