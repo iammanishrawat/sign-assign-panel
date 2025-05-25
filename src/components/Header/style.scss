@@ -9,15 +9,24 @@
     gap: 0.5rem;
     img {
       width: 20%;
+      @media (max-width: 380px) {
+        width: 15%;
+      }
     }
     h4 {
       text-transform: uppercase;
       font-weight: 600;
       color: var(--main-color);
+      @media (max-width: 380px) {
+        font-size: 0.754rem;
+      }
     }
     p {
       color: var(--text-color);
       font-size: 0.854rem;
+      @media (max-width: 380px) {
+        font-size: 0.754rem;
+      }
     }
   }
   .logout-area {
@@ -27,11 +36,17 @@
     justify-content: flex-end;
     img {
       width: 20%;
+      @media (max-width: 380px) {
+        width: 25%;
+      }
     }
     p {
       color: var(--text-color);
       font-size: 0.854rem;
       text-transform: capitalize;
+      @media (max-width: 380px) {
+        display: none;
+      }
     }
   }
 }

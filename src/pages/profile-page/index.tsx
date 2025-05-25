@@ -75,6 +75,7 @@ const ProfilePage = () => {
               />
             </div>
           </div>
+
           <div className="button-group">
             <button type="button" onClick={() => setEditMode(!editMode)}>
               {editMode ? 'Save' : 'Edit'}

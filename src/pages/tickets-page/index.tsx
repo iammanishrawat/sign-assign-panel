@@ -3,14 +3,9 @@ import './style.scss'
 const TicketPage = () => {
   return (
     <>
-      <div>
-        <h5>Help & Support</h5>
-        <img
-          src={ticketImage}
-          alt=""
-          width={'70%'}
-          style={{ margin: '0 auto', marginTop: '2rem' }}
-        />
+      <div className="help-image-area">
+        <h6>Help & Support</h6>
+        <img src={ticketImage} alt="" />
       </div>
       <div className="clickable-area flex justify-center mt-10">
         <button type="button" className="active">

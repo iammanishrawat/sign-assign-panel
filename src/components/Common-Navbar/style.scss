@@ -292,6 +292,7 @@ header {
       gap: 0;
       width: 100%;
       justify-content: space-between;
+      flex-wrap: wrap;
     }
   }
 
@@ -308,6 +309,15 @@ header {
     height: 80px;
     align-items: center;
     justify-content: space-between;
+  }
+}
+
+@media (max-width: 380px) {
+  .header {
+    .contact-area {
+      justify-content: center;
+      gap: 0.554rem;
+    }
   }
 }
 

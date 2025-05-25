@@ -1,0 +1,16 @@
+.common-area {
+  .help-image-area {
+    img {
+      margin: 2rem auto 0;
+      width: 70%;
+      @media (max-width: 767px) {
+        width: 100%;
+      }
+    }
+    h6 {
+      color: var(--text-color);
+      font-size: 1.254rem;
+      font-weight: 600;
+    }
+  }
+}

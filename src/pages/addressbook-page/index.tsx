@@ -23,7 +23,7 @@ const AddressBookPage = () => {
   return (
     <>
       {!showForm && (
-        <div>
+        <>
           <div className="add-address-area">
             <h6>Default Address:</h6>
             <button type="button" onClick={handleAddNewClick}>
@@ -50,7 +50,7 @@ const AddressBookPage = () => {
               </div>
             ))}
           </div>
-        </div>
+        </>
       )}
 
       {showForm && (
