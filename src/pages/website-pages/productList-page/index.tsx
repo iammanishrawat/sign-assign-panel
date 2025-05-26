@@ -11,7 +11,7 @@ const ProductListPage = () => {
             <div className="left">
               <ul>
                 <li>
-                  <a href="/">Home</a>
+                  <Link to={'/'}>Home</Link>
                 </li>
                 <li>
                   <span>
@@ -47,7 +47,7 @@ const ProductListPage = () => {
               <h3>Banners</h3>
               <div className="banner-inner" id="dataList">
                 <div className="inner-card">
-                  <a href="/product/banner-stands">
+                  <Link to={'/product/banner-stands'}>
                     <div className="p-3 m-0">
                       <img
                         src="http://3.109.198.252/images/logo.png"
@@ -143,7 +143,7 @@ const ProductListPage = () => {
                         Starts at: <span className="text-green">-</span>
                       </h6>
                     </div>
-                  </a>
+                  </Link>
                   <a
                     href="http://3.109.198.252/editor"
                     target="_blank"
@@ -153,7 +153,7 @@ const ProductListPage = () => {
                   </a>
                 </div>
                 <div className="inner-card">
-                  <a href="/product/heavy-duty-banners">
+                  <Link to={'/product/heavy-duty-banners'}>
                     <div className="p-3 m-0">
                       <img
                         src="http://3.109.198.252/images/logo.png"
@@ -249,7 +249,7 @@ const ProductListPage = () => {
                         Starts at: <span className="text-green">-</span>
                       </h6>
                     </div>
-                  </a>
+                  </Link>
                   <a
                     href="http://3.109.198.252/editor"
                     target="_blank"
@@ -259,7 +259,7 @@ const ProductListPage = () => {
                   </a>
                 </div>
                 <div className="inner-card">
-                  <a href="/product/mesh-banners">
+                  <Link to={'/product/mesh-banners'}>
                     <div className="p-3 m-0">
                       <img
                         src="http://3.109.198.252/images/logo.png"
@@ -355,7 +355,7 @@ const ProductListPage = () => {
                         Starts at: <span className="text-green">-</span>
                       </h6>
                     </div>
-                  </a>
+                  </Link>
                   <a
                     href="http://3.109.198.252/editor"
                     target="_blank"
@@ -365,7 +365,7 @@ const ProductListPage = () => {
                   </a>
                 </div>
                 <div className="inner-card">
-                  <a href="/product/vinyl-banners">
+                  <Link to={'/product/vinyl-banners'}>
                     <div className="p-3 m-0">
                       <img
                         src="http://3.109.198.252/images/logo.png"
@@ -461,7 +461,7 @@ const ProductListPage = () => {
                         Starts at: <span className="text-green">$0</span>
                       </h6>
                     </div>
-                  </a>
+                  </Link>
                   <a
                     href="http://3.109.198.252/editor"
                     target="_blank"
@@ -471,7 +471,7 @@ const ProductListPage = () => {
                   </a>
                 </div>
                 <div className="inner-card">
-                  <a href="/product/product-1">
+                  <Link to={'/product/product-1'}>
                     <div className="p-3 m-0">
                       <img
                         src="http://3.109.198.252/images/logo.png"
@@ -567,7 +567,7 @@ const ProductListPage = () => {
                         Starts at: <span className="text-green">-</span>
                       </h6>
                     </div>
-                  </a>
+                  </Link>
                   <a
                     href="http://3.109.198.252/editor"
                     target="_blank"
@@ -977,51 +977,6 @@ const ProductListPage = () => {
             striking reality with our comprehensive range of customizable
             banners and stands.
           </p>
-        </div>
-      </div>
-
-      <div className="form-area py-10">
-        <div className="container-fluid">
-          <div className="form-inner-area">
-            <div className="text-area">
-              <h4 className="mb-3">Trade Partners Can Get Up to 30% Off!</h4>
-              <p>
-                We are offering exclusive discounts for trade partners. All you
-                need to do is provide us with your name and email, we'll ask for
-                some further details and upon confirmation you can enjoy up to
-                30% discount on your orders!
-              </p>
-            </div>
-            <div className="form-card">
-              <form action="#">
-                <div className="form-group">
-                  <input
-                    type="name"
-                    placeholder="First Name"
-                    className="form-control"
-                    required={true}
-                  />
-                </div>
-                <div className="form-group">
-                  <input
-                    type="name"
-                    placeholder="Last Name"
-                    className="form-control"
-                    required={true}
-                  />
-                </div>
-                <div className="form-group">
-                  <input
-                    type="email"
-                    placeholder="Email Address"
-                    className="form-control"
-                    required={true}
-                  />
-                </div>
-                <a href="#">Submit Now</a>
-              </form>
-            </div>
-          </div>
         </div>
       </div>
     </>
