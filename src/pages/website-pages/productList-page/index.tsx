@@ -1,8 +1,28 @@
 import { Link } from 'react-router-dom'
 import './style.scss'
+import {
+  Listbox,
+  ListboxButton,
+  ListboxOption,
+  ListboxOptions,
+} from '@headlessui/react'
+// import { CheckIcon, ChevronDownIcon } from '@heroicons/react/20/solid'
+import clsx from 'clsx'
+import { useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCircleXmark } from '@fortawesome/free-regular-svg-icons'
+import { faCheck, faChevronDown } from '@fortawesome/free-solid-svg-icons'
+
+const people = [
+  { id: 1, name: 'Tom Cook' },
+  { id: 2, name: 'Wade Cooper' },
+  { id: 3, name: 'Tanya Fox' },
+  { id: 4, name: 'Arlene Mccoy' },
+  { id: 5, name: 'Devon Webb' },
+]
+
 const ProductListPage = () => {
+  const [selected, setSelected] = useState(people[1])
   return (
     <>
       <div className="breadcrumbs-area">
@@ -581,7 +601,50 @@ const ProductListPage = () => {
             <div className="right-area">
               <div className="dropdown-area">
                 <p>Sort By</p>
-                <div className="custom-select" id="customSelect">
+                <Listbox value={selected} onChange={setSelected}>
+                  <ListboxButton
+                    className={clsx(
+                      'relative block w-52 rounded-none bg-gray-100 py-2.5 pr-8 pl-3 text-left text-sm/6 cursor-pointer text-gray-800 border-2 border-gray-200'
+                    )}
+                  >
+                    {selected.name}
+                    {/* <ChevronDownIcon
+                      className="group pointer-events-none absolute top-2.5 right-2.5 size-4 fill-white/60"
+                      aria-hidden="true"
+                    /> */}
+                    <FontAwesomeIcon
+                      icon={faChevronDown}
+                      className="group pointer-events-none absolute top-2.5 right-2.5 size-4 fill-white/60"
+                      aria-hidden="true"
+                    />
+                  </ListboxButton>
+                  <ListboxOptions
+                    anchor="bottom"
+                    transition
+                    className={clsx(
+                      'w-(--button-width) rounded-none border-2 border-gray-200 bg-gray-100 p-1 [--anchor-gap:--spacing(1)] focus:outline-none',
+                      'transition duration-100 ease-in data-leave:data-closed:opacity-0'
+                    )}
+                  >
+                    {people.map((person) => (
+                      <ListboxOption
+                        key={person.name}
+                        value={person}
+                        className="group flex cursor-pointer items-center gap-2 rounded-lg px-3 py-1.5 select-none data-focus:bg-white/10"
+                      >
+                        {/* <CheckIcon className="invisible size-4 fill-white group-data-selected:visible" /> */}
+                        <FontAwesomeIcon
+                          icon={faCheck}
+                          className="invisible size-4 fill-white group-data-selected:visible"
+                        />
+                        <div className="text-sm/6 text-gray-800">
+                          {person.name}
+                        </div>
+                      </ListboxOption>
+                    ))}
+                  </ListboxOptions>
+                </Listbox>
+                {/* <div className="custom-select" id="customSelect">
                   <div className="selected">Select your Product</div>
                   <div
                     className="options"
@@ -601,7 +664,7 @@ const ProductListPage = () => {
                       Vinyl Banner
                     </div>
                   </div>
-                </div>
+                </div> */}
               </div>
               <div className="main-filter-area">
                 <div className="filters-inner">
