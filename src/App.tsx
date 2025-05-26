@@ -8,6 +8,7 @@ import DesignPage from './pages/panel-pages/designs-page'
 import PanelLayout from './layouts/panelLayout'
 import WebsiteLayout from './layouts/websiteLayout'
 import WebHomePage from './pages/website-pages/home-page'
+import ProductListPage from './pages/website-pages/productList-page'
 
 const App = () => {
   return (
@@ -16,6 +17,7 @@ const App = () => {
         {/* Website Layout */}
         <Route path="/" element={<WebsiteLayout />}>
           <Route index element={<WebHomePage />} />
+          <Route path="product-list" element={<ProductListPage />} />
           {/* You can add other public routes here later */}
         </Route>
 

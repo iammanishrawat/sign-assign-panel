@@ -13,7 +13,7 @@ const CommonNavbarComponent = () => {
   const [isOpen, setIsOpen] = useState(false)
   const [isModalOpen, setIsModalOpen] = useState(false)
   return (
-    <div>
+    <>
       <header>
         <div className="container-fluid header">
           <div className="review-area">
@@ -260,7 +260,7 @@ const CommonNavbarComponent = () => {
           </ul>
         </div>
       </nav>
-    </div>
+    </>
   )
 }
 

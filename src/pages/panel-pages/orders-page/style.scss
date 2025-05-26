@@ -24,11 +24,11 @@
         gap: 1rem;
         .right-area {
           display: flex;
+          gap: 1rem;
           @media (max-width: 660px) {
             flex-wrap: wrap;
             width: 100%;
           }
-          gap: 1rem;
           button {
             border: 1px solid var(--border-color);
             padding: 0.554rem 1rem;
@@ -202,12 +202,12 @@
         .left-area {
           display: flex;
           align-items: center;
+          gap: 3rem;
           @media (max-width: 767px) {
             gap: 1rem;
             flex-wrap: wrap;
             margin-bottom: 1rem;
           }
-          gap: 3rem;
           img {
             width: 30%;
             border-radius: 0.554rem;
