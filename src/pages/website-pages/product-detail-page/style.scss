@@ -176,3 +176,24 @@
     padding: 50px 70px;
   }
 }
+
+.customer-review-image {
+  width: 70px;
+  height: 70px;
+}
+
+.variant-card {
+  min-width: 120px;
+  padding: 5px;
+}
+
+.variant-image {
+  width: 120px;
+  height: 60px;
+  object-fit: fill;
+}
+
+.detail-page-area .owl-carousel .inner-card img {
+  width: 120px;
+  height: 100px;
+}
