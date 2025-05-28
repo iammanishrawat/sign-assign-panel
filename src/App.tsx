@@ -8,18 +8,42 @@ import DesignPage from './pages/panel-pages/designs-page'
 import PanelLayout from './layouts/panelLayout'
 import WebsiteLayout from './layouts/websiteLayout'
 import WebHomePage from './pages/website-pages/home-page'
+import React, { useEffect, useState } from 'react';
+import { getUserFromLocalStorage } from './utils/auth';
+import { AuthProvider } from './context/AuthContext';
+
+const PanelLayoutWithAuth = () => (
+  <AuthProvider>
+    <PanelLayout />
+  </AuthProvider>
+);
 
 const App = () => {
+  const [token, setToken] = useState<string | null>(null);
+  const [userData, setUserData] = useState<any>(null);
+  console.log(`token`, token)
+  console.log(`userData`, userData)
+
+  useEffect(() => {
+    const { token, userData } = getUserFromLocalStorage();
+
+    if ((token ?? "").trim() !== "") {
+      setToken(token);
+      setUserData(userData);
+    }
+    window.history.replaceState({}, document.title, window.location.pathname)
+  }, []);
+
   return (
     <Router basename="/user-dashboard">
       <Routes>
         {/* Website Layout */}
-        <Route path="/" element={<WebsiteLayout />}>
+        <Route path="/web" element={<WebsiteLayout />}>
           <Route index element={<WebHomePage />} />
           {/* You can add other public routes here later */}
         </Route>
 
-        <Route path="/" element={<PanelLayout />}>
+        <Route path="/" element={<PanelLayoutWithAuth />}>
           <Route index element={<DashboardPage />} />
           <Route path="dashboard" element={<DashboardPage />} />
           <Route path="profile" element={<ProfilePage />} />

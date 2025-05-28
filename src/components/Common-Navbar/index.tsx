@@ -8,10 +8,13 @@ import { faPhone } from '@fortawesome/free-solid-svg-icons'
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons'
 import SignupModal from '../../dialogs/signup-modal'
 import LoginModal from '../../dialogs/login-modal'
+import { useAuth } from '../../context/AuthContext';
 
 const CommonNavbarComponent = () => {
+  const { user, logout } = useAuth();
   const [isOpen, setIsOpen] = useState(false)
   const [isModalOpen, setIsModalOpen] = useState(false)
+
   return (
     <div>
       <header>
@@ -91,6 +94,29 @@ const CommonNavbarComponent = () => {
             </div>
             <div className="auth-button" id="navbarAuthOptionsContainer">
               <Link
+                to="/dashboard"
+                className="profile-icon"
+                title="Profile"
+                style={{ cursor: 'pointer' }}
+              >
+                <i className="fi fi-rs-user-gear"></i>
+              </Link>
+
+              <button
+                onClick={logout}
+                className="logout-icon"
+                title="Logout"
+                style={{
+                  background: 'none',
+                  border: 'none',
+                  cursor: 'pointer',
+                  padding: 0,
+                }}
+                aria-label="Logout"
+              >
+                <i className="fi fi-rr-sign-out-alt"></i>
+              </button>
+              {/* <Link
                 to="#"
                 onClick={() => setIsModalOpen(true)}
                 className="signup-button"
@@ -109,7 +135,7 @@ const CommonNavbarComponent = () => {
               >
                 Login
               </Link>
-              <LoginModal isOpen={isOpen} setIsOpen={setIsOpen} />
+              <LoginModal isOpen={isOpen} setIsOpen={setIsOpen} /> */}
             </div>
           </div>
         </div>
