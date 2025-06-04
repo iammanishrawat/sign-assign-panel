@@ -1,12 +1,5 @@
 export const getUserFromLocalStorage = () => {
     try {
-        // const token = localStorage.getItem('jwtTokenUser');
-        // console.log(`token`, token)
-        // const userDataStr = localStorage.getItem('userDataUser');
-        // console.log(`userDataStr`, userDataStr)
-        // const userData = userDataStr ? JSON.parse(userDataStr) : null;
-        // console.log(`userData`, userData)
-
         const params = new URLSearchParams(window.location.search);
         const token = params.get('token');
         const userData = params.get('user');

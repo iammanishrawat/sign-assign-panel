@@ -77,7 +77,7 @@ export const deleteUserAddress = createAsyncThunk('userAddress/deleteUserAddress
     }
 });
 
-const authSlice = createSlice({
+const userAddressSlice = createSlice({
     name: 'userAddress',
     initialState,
     reducers: {},
@@ -121,4 +121,4 @@ const authSlice = createSlice({
     },
 });
 
-export default authSlice.reducer;
+export default userAddressSlice.reducer;

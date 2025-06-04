@@ -1,15 +1,29 @@
-import footerLogo from '../../assets/images/website-images/footer-logo.png'
-import './style.scss'
-import { Link } from 'react-router-dom'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPhoneVolume } from '@fortawesome/free-solid-svg-icons'
-import { faEnvelopeOpen } from '@fortawesome/free-regular-svg-icons'
-import { faLocationDot } from '@fortawesome/free-solid-svg-icons/faLocationDot'
 import { faFacebook } from '@fortawesome/free-brands-svg-icons/faFacebook'
 import { faLinkedin } from '@fortawesome/free-brands-svg-icons/faLinkedin'
 import { faSquareInstagram } from '@fortawesome/free-brands-svg-icons/faSquareInstagram'
+import { faEnvelopeOpen } from '@fortawesome/free-regular-svg-icons'
+import { faPhoneVolume } from '@fortawesome/free-solid-svg-icons'
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons/faArrowRight'
+import { faLocationDot } from '@fortawesome/free-solid-svg-icons/faLocationDot'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { useEffect } from 'react'
+import { Link } from 'react-router-dom'
+
+import footerLogo from '../../assets/images/website-images/footer-logo.png'
+import { listProductCategory } from '../../features/product-category/productCategorySlice'
+import { getLinkFromName } from '../../helpers'
+import { useAppDispatch } from '../../hooks/useAppDispatch'
+import { useAppSelector } from '../../hooks/useAppSelector'
+import './style.scss'
+
 const CommonFooterComponent = () => {
+  const dispatch = useAppDispatch();
+  const { productCategories, status, error } = useAppSelector((state) => state.productCategory);
+
+  useEffect(() => {
+    dispatch(listProductCategory());
+  }, [dispatch]);
+
   return (
     <>
       <footer>
@@ -58,7 +72,16 @@ const CommonFooterComponent = () => {
 
             <div className="footer-col">
               <h5>Choose from</h5>
-              <ul id="footerCategoryMenuListContainer"></ul>
+              <ul id="footerCategoryMenuListContainer">
+                {productCategories?.map((productCategory) => (
+                  <li key={productCategory.productCategoryId}>
+                    <Link to={`${import.meta.env.VITE_BASE_PATH_WEB}/category/${getLinkFromName(productCategory.name)}`}>
+                      <FontAwesomeIcon icon={faArrowRight} />
+                      <span>{productCategory.name}</span>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
             </div>
 
             <div className="footer-col">

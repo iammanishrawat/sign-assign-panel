@@ -1,19 +1,25 @@
-import { useState } from 'react'
-import './style.scss'
-import { Link } from 'react-router-dom'
-import logo from '../../assets/images/website-images/logo.png'
+import { faEnvelope, faPhone, faStar } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faStar } from '@fortawesome/free-solid-svg-icons'
-import { faPhone } from '@fortawesome/free-solid-svg-icons'
-import { faEnvelope } from '@fortawesome/free-solid-svg-icons'
-import SignupModal from '../../dialogs/signup-modal'
-import LoginModal from '../../dialogs/login-modal'
-import { useAuth } from '../../context/AuthContext';
+import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
+
+import logo from '../../assets/images/website-images/logo.png'
+import { useAuth } from '../../context/AuthContext'
+import { listProductCategory } from '../../features/product-category/productCategorySlice'
+import { getLinkFromName } from '../../helpers'
+import { useAppDispatch } from '../../hooks/useAppDispatch'
+import { useAppSelector } from '../../hooks/useAppSelector'
+import './style.scss'
 
 const CommonNavbarComponent = () => {
   const { user, logout } = useAuth();
-  const [isOpen, setIsOpen] = useState(false)
-  const [isModalOpen, setIsModalOpen] = useState(false)
+
+  const dispatch = useAppDispatch();
+  const { productCategories, status, error } = useAppSelector((state) => state.productCategory);
+
+  useEffect(() => {
+    dispatch(listProductCategory());
+  }, [dispatch]);
 
   return (
     <div>
@@ -116,26 +122,6 @@ const CommonNavbarComponent = () => {
               >
                 <i className="fi fi-rr-sign-out-alt"></i>
               </button>
-              {/* <Link
-                to="#"
-                onClick={() => setIsModalOpen(true)}
-                className="signup-button"
-              >
-                Sign up
-              </Link>
-              <SignupModal
-                isModalOpen={isModalOpen}
-                setIsModalOpen={setIsModalOpen}
-              />
-
-              <Link
-                to="#"
-                onClick={() => setIsOpen(true)}
-                className="login-button"
-              >
-                Login
-              </Link>
-              <LoginModal isOpen={isOpen} setIsOpen={setIsOpen} /> */}
             </div>
           </div>
         </div>
@@ -264,25 +250,18 @@ const CommonNavbarComponent = () => {
       <nav className="mega-menu">
         <div className="container-fluid">
           <ul id="navbarCategoryMenuListContainer">
-            <li className="dropdown">
-              <Link to="/category/banner">Banner</Link>
-              <ul className="dropdown-content">
-                <li className="dropdown-lists">
-                  <Link to="/subcategory/vinyl-banner">Vinyl Banner</Link>
-                </li>
-              </ul>
-            </li>
-
-            <li className="dropdown">
-              <Link to="/category/window-products">Window Products</Link>
-              <ul className="dropdown-content">
-                <li className="dropdown-lists">
-                  <Link to="/subcategory/vinyl-window-decals">
-                    Vinyl Window Decals
-                  </Link>
-                </li>
-              </ul>
-            </li>
+            {productCategories?.map((productCategory) => (
+              <li className="dropdown">
+                <Link to={`${import.meta.env.VITE_BASE_PATH_WEB}/category/${getLinkFromName(productCategory.name)}`}>{productCategory.name}</Link>
+                <ul className="dropdown-content">
+                  {productCategory.productSubCategories?.map((productSubCategory) => (
+                    <li className="dropdown-lists">
+                      <Link to={`${import.meta.env.VITE_BASE_PATH_WEB}/subcategory/${getLinkFromName(productSubCategory.name)}`}>{productSubCategory.name}</Link>
+                    </li>
+                  ))}
+                </ul>
+              </li>
+            ))}
           </ul>
         </div>
       </nav>

@@ -21,8 +21,6 @@ const PanelLayoutWithAuth = () => (
 const App = () => {
   const [token, setToken] = useState<string | null>(null);
   const [userData, setUserData] = useState<any>(null);
-  console.log(`token`, token)
-  console.log(`userData`, userData)
 
   useEffect(() => {
     const { token, userData } = getUserFromLocalStorage();
