@@ -1,0 +1,46 @@
+.common-area {
+  .add-address-area {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+    gap: 1rem;
+    h6 {
+      color: var(--text-color);
+      font-size: 1.254rem;
+      font-weight: 600;
+    }
+    button {
+      display: flex;
+      background-color: var(--highlighted-color);
+      border-radius: 0.554rem;
+      padding: 0.854rem 2.5rem;
+      color: var(--white-color);
+      cursor: pointer;
+      font-size: 0.854rem;
+    }
+  }
+
+  .address-card {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    .inner {
+      background-color: var(--secondary-color);
+      padding: 2rem;
+      border-radius: 0.554rem;
+      h6 {
+        color: var(--text-color);
+        font-weight: 500;
+      }
+      p {
+        color: var(--text-color);
+        margin-block: 0.5rem;
+        span {
+          color: var(--subtext-color);
+        }
+      }
+    }
+  }
+}
