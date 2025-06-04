@@ -12,7 +12,7 @@ const HeaderComponent = () => {
                 <div className="user-area">
                     <img src={profileIcon} alt="" />
                     <div>
-                        <h4>Hey There, {user?.firstName}</h4>
+                        <h4>Hey There, {user?.firstName}{(user?.lastName ?? "").trim() !== "" ? ` ${user?.lastName}` : ""}</h4>
                         <p>{user?.email}</p>
                     </div>
                 </div>

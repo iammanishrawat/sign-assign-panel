@@ -1,23 +1,75 @@
-import { useState } from 'react'
-import './style.scss'
-import Icons from '../../../components/Icons'
 import {
   Dialog,
   DialogBackdrop,
   DialogPanel,
   DialogTitle,
-} from '@headlessui/react'
+} from '@headlessui/react';
+import { useEffect, useState } from 'react';
+
+import Icons from '../../../components/Icons';
+import { deleteUserAddress, listUserAddress, type UserAddress } from '../../../features/user-address/userAddressSlice';
+import { formatAddress } from '../../../helpers';
+import { useAppDispatch } from '../../../hooks/useAppDispatch';
+import { useAppSelector } from '../../../hooks/useAppSelector';
+import CreateAddressForm from './parts/create-address-form';
+import './style.scss';
 
 const AddressBookPage = () => {
+  const dispatch = useAppDispatch();
+  const { userAddresses, status, error } = useAppSelector((state) => state.userAddress);
+
   const [showForm, setShowForm] = useState(false)
   const [open, setOpen] = useState(false)
+  const [selectedUserAddress, setSelectedUserAddress] = useState<UserAddress | null>(null)
+  const [selectedUserAddressIdToDelete, setSelectedUserAddressIdToDelete] = useState<number | null>(null)
 
-  const handleAddNewClick = () => {
+  useEffect(() => {
+    dispatch(listUserAddress());
+  }, [dispatch]);
+
+  useEffect(() => {
+    if (!showForm) {
+      setSelectedUserAddress(null)
+      dispatch(listUserAddress());
+    }
+  }, [showForm])
+
+  useEffect(() => {
+    if (!open) {
+      setSelectedUserAddressIdToDelete(null)
+      dispatch(listUserAddress());
+    }
+  }, [open])
+
+  const handleAddNewClick = (userAddress: UserAddress | null = null) => {
+    if (userAddress) {
+      setSelectedUserAddress(userAddress)
+    }
     setShowForm(true)
   }
 
-  const handleSaveOrCancel = () => {
-    setShowForm(false)
+  const handleDeleteItem = (userAddressId: number) => {
+    setSelectedUserAddressIdToDelete(userAddressId)
+    setOpen(true)
+  }
+
+  const onClickDelete = async () => {
+    try {
+      if (selectedUserAddressIdToDelete) {
+        const response = await dispatch(deleteUserAddress({
+          userAddressIds: [selectedUserAddressIdToDelete]
+        }))
+        if (deleteUserAddress.fulfilled.match(response)) {
+          alert("Address deleted successfully!");
+          setOpen(false)
+        } else if (deleteUserAddress.rejected.match(response)) {
+          // Handle error here
+          alert(response.payload); // this is what you returned with rejectWithValue
+        }
+      }
+    } catch (error) {
+      console.log(`error ===`, error)
+    }
   }
 
   return (
@@ -26,26 +78,25 @@ const AddressBookPage = () => {
         <>
           <div className="add-address-area">
             <h6>Default Address:</h6>
-            <button type="button" onClick={handleAddNewClick}>
+            <button type="button" onClick={() => handleAddNewClick()}>
               <Icons name="Plus" /> Add new address
             </button>
           </div>
           <div className="address-card">
-            {[1, 2, 3].map((_, index) => (
+            {userAddresses?.map((userAddress, index) => (
               <div className="inner" key={index}>
-                <h6>Gaurav Mittal</h6>
+                <h6>{userAddress?.firstName}{(userAddress?.lastName ?? "").trim() !== "" ? ` ${userAddress?.lastName}` : ""}</h6>
                 <p>
-                  Africa Ave, Diplomatic Enclave, Chanakyapuri, New Delhi, Delhi
-                  110023, India
+                  {formatAddress(userAddress)}
                 </p>
                 <p>
-                  <span>Phone Number:</span> 9999988988
+                  <span>Phone Number:</span> {userAddress?.phoneNumber}
                 </p>
-                <div className="button-group" onClick={() => setOpen(true)}>
-                  <button type="button" onClick={handleAddNewClick}>
+                <div className="button-group">
+                  <button type="button" onClick={() => userAddress ? handleAddNewClick(userAddress) : {}}>
                     Edit
                   </button>
-                  <button type="button">Delete</button>
+                  <button type="button" onClick={() => userAddress?.userAddressId ? handleDeleteItem(userAddress.userAddressId) : {}}>Delete</button>
                 </div>
               </div>
             ))}
@@ -54,108 +105,7 @@ const AddressBookPage = () => {
       )}
 
       {showForm && (
-        <div className="new-address-form">
-          <h5>Add New Address</h5>
-          <form>
-            <div className="form-inner">
-              <div className="form-group">
-                <label>
-                  First Name <span>*</span>
-                </label>
-                <input type="text" className="w-full" defaultValue="Gaurav" />
-              </div>
-              <div className="form-group">
-                <label>
-                  Last Name <span>*</span>
-                </label>
-                <input type="text" className="w-full" defaultValue="Mittal" />
-              </div>
-              <div className="form-group">
-                <label>
-                  Company Name <span>*</span>
-                </label>
-                <input type="text" className="w-full" defaultValue="gaurav" />
-              </div>
-              <div className="form-group">
-                <label>
-                  Cell Phone Number <span>*</span>
-                </label>
-                <input
-                  type="text"
-                  className="w-full"
-                  defaultValue="+9199999999"
-                />
-              </div>
-            </div>
-            <div className="form-group mb-8">
-              <label>
-                Street Address <span>*</span>
-              </label>
-              <input
-                type="text"
-                className="w-full"
-                defaultValue="Africa Ave, Diplomatic Enclave, Chanakyapuri, New Delhi, Delhi 110023, India"
-              />
-            </div>
-            <div className="form-inner">
-              <div className="form-group">
-                <label>
-                  Zip/Postal Code <span>*</span>
-                </label>
-                <input type="text" className="w-full" defaultValue="110023" />
-              </div>
-              <div className="form-group">
-                <label>
-                  City <span>*</span>
-                </label>
-                <input
-                  type="text"
-                  className="w-full"
-                  defaultValue="New Delhi"
-                />
-              </div>
-              <div className="form-group">
-                <label>
-                  State <span>*</span>
-                </label>
-                <select className="w-full">
-                  <option value="">NCT Delhi</option>
-                  <option value="">Haryana</option>
-                  <option value="">Uttar Pradesh</option>
-                </select>
-              </div>
-              <div className="form-group">
-                <label>
-                  Country <span>*</span>
-                </label>
-                <select className="w-full">
-                  <option value="">India</option>
-                  <option value="">UK</option>
-                  <option value="">Australia</option>
-                </select>
-              </div>
-            </div>
-            <div className="form-group">
-              <label htmlFor="billing">
-                <input type="checkbox" id="billing" />
-                This is my default billing address
-              </label>
-              <br />
-              <label htmlFor="shipping">
-                <input type="checkbox" id="shipping" />
-                This is my default shipping address
-              </label>
-            </div>
-            <div className="button-group">
-              <button type="button" onClick={handleSaveOrCancel}>
-                Save address
-              </button>
-              <button type="button" onClick={handleSaveOrCancel}>
-                Cancel
-              </button>
-            </div>
-          </form>
-        </div>
+        <CreateAddressForm setShowForm={setShowForm} selectedUserAddress={selectedUserAddress} />
       )}
 
       <Dialog open={open} onClose={setOpen} className="relative z-10">
@@ -195,7 +145,7 @@ const AddressBookPage = () => {
               <div className="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
                 <button
                   type="button"
-                  onClick={() => setOpen(false)}
+                  onClick={onClickDelete}
                   className="inline-flex w-full justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-xs hover:bg-red-500 sm:ml-3 sm:w-auto cursor-pointer"
                 >
                   Delete
