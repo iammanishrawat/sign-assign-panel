@@ -2,22 +2,22 @@
 @import "@flaticon/flaticon-uicons/css/all/all";
 
 :root {
-    --main-color: #452E74;
-    --text-color: #1e1e1e;
-    --subtext-color: #6e6e6e;
-    --secondary-color: #F0F0F0;
-    --highlighted-color: #FE6221;
-    --white-color: #ffffff;
-    --border-color: #cccccc;
-    --green-bg: #d0ffd1;
-    --green-color: #004b03;
-    --blue-bg: #cce0fd;
-    --blue-color: #003b5c;
-    --teal-blue-text: #5b85c2;
-    --red-bg: #ffd2d2;
-    --red-color: #5c0000;
+  --main-color: #452e74;
+  --text-color: #1e1e1e;
+  --subtext-color: #6e6e6e;
+  --secondary-color: #f0f0f0;
+  --highlighted-color: #fe6221;
+  --white-color: #ffffff;
+  --border-color: #cccccc;
+  --green-bg: #d0ffd1;
+  --green-color: #004b03;
+  --blue-bg: #cce0fd;
+  --blue-color: #003b5c;
+  --teal-blue-text: #5b85c2;
+  --red-bg: #ffd2d2;
+  --red-color: #5c0000;
 }
 
 body {
-    font-family: "Onest", sans-serif;
+  font-family: "Onest", sans-serif;
 }

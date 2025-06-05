@@ -1,20 +1,16 @@
-import { Dialog, Transition } from '@headlessui/react'
-import { Fragment, useState } from 'react'
-import { Link } from 'react-router-dom'
-import '../../websiteAuth.scss'
-import facebookIcon from '../../assets/images/panel-images/auth-images/facebook.png'
-import googleIcon from '../../assets/images/panel-images/auth-images/google.png'
-import amazonIcon from '../../assets/images/panel-images/auth-images/social.png'
+import {Dialog, Transition} from "@headlessui/react"
+import {Fragment, useState} from "react"
+import {Link} from "react-router-dom"
+import "../../websiteAuth.scss"
+import facebookIcon from "../../assets/images/panel-images/auth-images/facebook.png"
+import googleIcon from "../../assets/images/panel-images/auth-images/google.png"
+import amazonIcon from "../../assets/images/panel-images/auth-images/social.png"
 
-export default function SignupModal({ isModalOpen, setIsModalOpen }: any) {
-  const [selectedRole, setSelectedRole] = useState('1') // default to 'Individual'
+export default function SignupModal({isModalOpen, setIsModalOpen}: any) {
+  const [selectedRole, setSelectedRole] = useState("1") // default to 'Individual'
   return (
     <Transition appear show={isModalOpen} as={Fragment}>
-      <Dialog
-        as="div"
-        className="relative z-50"
-        onClose={() => setIsModalOpen(false)}
-      >
+      <Dialog as="div" className="relative z-50" onClose={() => setIsModalOpen(false)}>
         <Transition.Child
           as={Fragment}
           enter="ease-out duration-300"
@@ -43,10 +39,9 @@ export default function SignupModal({ isModalOpen, setIsModalOpen }: any) {
                   <div className="left-area">
                     <h1>Sign Up</h1>
                     <p>
-                      Sign up today and enjoy 25% OFF your first purchase!
-                      Whether you're just getting started or looking to take
-                      things to the next level, this is the perfect time to jump
-                      in and save. Don’t miss out—this special offer won’t last
+                      Sign up today and enjoy 25% OFF your first purchase! Whether you're just
+                      getting started or looking to take things to the next level, this is the
+                      perfect time to jump in and save. Don’t miss out—this special offer won’t last
                       forever!
                     </p>
                   </div>
@@ -82,12 +77,7 @@ export default function SignupModal({ isModalOpen, setIsModalOpen }: any) {
                       </div>
                       <div className="form-group">
                         <div className="flex-inner">
-                          <select
-                            name=""
-                            id=""
-                            className="form-select"
-                            style={{ flex: '1 1 25%' }}
-                          >
+                          <select name="" id="" className="form-select" style={{flex: "1 1 25%"}}>
                             <option value="">
                               <div>
                                 <span>+91</span>
@@ -107,7 +97,7 @@ export default function SignupModal({ isModalOpen, setIsModalOpen }: any) {
                           <input
                             type="tel"
                             className="form-control"
-                            style={{ flex: '1 1 75%' }}
+                            style={{flex: "1 1 75%"}}
                             id="mobile"
                             name="mobile"
                             placeholder="Mobile Number"
@@ -124,10 +114,8 @@ export default function SignupModal({ isModalOpen, setIsModalOpen }: any) {
                                 type="radio"
                                 name="roleId"
                                 value="1"
-                                checked={selectedRole === '1'}
-                                onChange={(e) =>
-                                  setSelectedRole(e.target.value)
-                                }
+                                checked={selectedRole === "1"}
+                                onChange={e => setSelectedRole(e.target.value)}
                               />
                               Individual
                             </label>
@@ -139,21 +127,16 @@ export default function SignupModal({ isModalOpen, setIsModalOpen }: any) {
                                 type="radio"
                                 name="roleId"
                                 value="2"
-                                checked={selectedRole === '2'}
-                                onChange={(e) =>
-                                  setSelectedRole(e.target.value)
-                                }
+                                checked={selectedRole === "2"}
+                                onChange={e => setSelectedRole(e.target.value)}
                               />
                               Business
                             </label>
                           </div>
                         </div>
                       </div>
-                      {selectedRole === '2' && (
-                        <div
-                          id="businessDetailsContainer"
-                          className="form-group"
-                        >
+                      {selectedRole === "2" && (
+                        <div id="businessDetailsContainer" className="form-group">
                           <input
                             type="text"
                             id="businessName"
@@ -166,14 +149,13 @@ export default function SignupModal({ isModalOpen, setIsModalOpen }: any) {
                       <div className="form-group">
                         <label htmlFor="terms">
                           <input type="checkbox" id="terms" />
-                          By agreeing, you'll receive the latest promotional
-                          offers, updates, and creative ideas from us via SMS,
-                          WhatsApp, or Email. You can opt out anytime you wish
-                          to.
+                          By agreeing, you'll receive the latest promotional offers, updates, and
+                          creative ideas from us via SMS, WhatsApp, or Email. You can opt out
+                          anytime you wish to.
                         </label>
                       </div>
                       <div className="form-group mt-3">
-                        <Link to={'/'} className="submit-btn">
+                        <Link to={"/"} className="submit-btn">
                           Create Account
                         </Link>
                       </div>
@@ -182,15 +164,15 @@ export default function SignupModal({ isModalOpen, setIsModalOpen }: any) {
                     <div className="sso-area mt-4">
                       <p>Or sign up with</p>
                       <div className="social-icons-inner">
-                        <Link to={'/'}>
+                        <Link to={"/"}>
                           <img src={facebookIcon} alt="" />
                           Facebook
                         </Link>
-                        <Link to={'/'}>
+                        <Link to={"/"}>
                           <img src={googleIcon} alt="" />
                           Google
                         </Link>
-                        <Link to={'/'}>
+                        <Link to={"/"}>
                           <img src={amazonIcon} alt="" />
                           Amazon
                         </Link>
@@ -201,7 +183,7 @@ export default function SignupModal({ isModalOpen, setIsModalOpen }: any) {
                       Already have an account? <a href="#">Log in</a>
                     </p>
                     <p>
-                      Read Our <a href="#">Terms And Conditions</a> And{' '}
+                      Read Our <a href="#">Terms And Conditions</a> And{" "}
                       <a href="#">Privacy Policy</a>
                     </p>
                   </div>

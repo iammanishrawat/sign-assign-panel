@@ -1,19 +1,15 @@
-import { Dialog, Transition } from '@headlessui/react'
-import { Fragment } from 'react'
-import { Link } from 'react-router-dom'
-import '../../websiteAuth.scss'
-import facebookIcon from '../../assets/images/panel-images/auth-images/facebook.png'
-import googleIcon from '../../assets/images/panel-images/auth-images/google.png'
-import amazonIcon from '../../assets/images/panel-images/auth-images/social.png'
+import {Dialog, Transition} from "@headlessui/react"
+import {Fragment} from "react"
+import {Link} from "react-router-dom"
+import "../../websiteAuth.scss"
+import facebookIcon from "../../assets/images/panel-images/auth-images/facebook.png"
+import googleIcon from "../../assets/images/panel-images/auth-images/google.png"
+import amazonIcon from "../../assets/images/panel-images/auth-images/social.png"
 
-export default function LoginModal({ isOpen, setIsOpen }: any) {
+export default function LoginModal({isOpen, setIsOpen}: any) {
   return (
     <Transition appear show={isOpen} as={Fragment}>
-      <Dialog
-        as="div"
-        className="relative z-50"
-        onClose={() => setIsOpen(false)}
-      >
+      <Dialog as="div" className="relative z-50" onClose={() => setIsOpen(false)}>
         <Transition.Child
           as={Fragment}
           enter="ease-out duration-300"
@@ -42,11 +38,10 @@ export default function LoginModal({ isOpen, setIsOpen }: any) {
                   <div className="left-area">
                     <h1>Login</h1>
                     <p>
-                      Welcome back! Please log in to your account to view your
-                      order history, track shipments, and enjoy a faster
-                      checkout experience. If you’re new here, create an account
-                      to access exclusive deals, manage your wishlist, and stay
-                      updated on the latest products.
+                      Welcome back! Please log in to your account to view your order history, track
+                      shipments, and enjoy a faster checkout experience. If you’re new here, create
+                      an account to access exclusive deals, manage your wishlist, and stay updated
+                      on the latest products.
                     </p>
                   </div>
                   <div className="right-area">
@@ -77,7 +72,7 @@ export default function LoginModal({ isOpen, setIsOpen }: any) {
                       </div>
 
                       <div className="form-group mt-4">
-                        <Link to={'/'} className="submit-btn">
+                        <Link to={"/"} className="submit-btn">
                           Login
                         </Link>
                       </div>
@@ -86,15 +81,15 @@ export default function LoginModal({ isOpen, setIsOpen }: any) {
                     <div className="sso-area mt-4">
                       <p>Or login with</p>
                       <div className="login-social-icons-inner">
-                        <Link to={'/'}>
+                        <Link to={"/"}>
                           <img src={facebookIcon} alt="" />
                           Facebook
                         </Link>
-                        <Link to={'/'}>
+                        <Link to={"/"}>
                           <img src={googleIcon} alt="" />
                           Google
                         </Link>
-                        <Link to={'/'}>
+                        <Link to={"/"}>
                           <img src={amazonIcon} alt="" />
                           Amazon
                         </Link>
@@ -102,7 +97,7 @@ export default function LoginModal({ isOpen, setIsOpen }: any) {
                     </div>
 
                     <p>
-                      Don't have an account? <Link to={'/'}>Sign up</Link>
+                      Don't have an account? <Link to={"/"}>Sign up</Link>
                     </p>
                   </div>
                 </div>

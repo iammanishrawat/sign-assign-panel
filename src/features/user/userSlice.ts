@@ -1,7 +1,7 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import {createAsyncThunk, createSlice} from "@reduxjs/toolkit"
 
-import type { UserAddress } from '../user-address/userAddressSlice';
-import * as UserAPI from './userAPI';
+import type {UserAddress} from "../user-address/userAddressSlice"
+import * as UserAPI from "./userAPI"
 
 export type User = {
   userId: number
@@ -33,87 +33,96 @@ export type DeleteUserPayload = {
 }
 
 interface UserState {
-  users: User[];
-  status: 'idle' | 'loading' | 'succeeded' | 'failed';
-  error: string | null;
+  users: User[]
+  status: "idle" | "loading" | "succeeded" | "failed"
+  error: string | null
 }
 
 const initialState: UserState = {
   users: [],
-  status: 'idle',
+  status: "idle",
   error: null,
-};
+}
 
-export const createUser = createAsyncThunk('user/createUser', async (payload: CreateUserPayload, { rejectWithValue }) => {
-  try {
-    return await UserAPI.createUser(payload);
-  } catch (error) {
-    return rejectWithValue(error);
+export const createUser = createAsyncThunk(
+  "user/createUser",
+  async (payload: CreateUserPayload, {rejectWithValue}) => {
+    try {
+      return await UserAPI.createUser(payload)
+    } catch (error) {
+      return rejectWithValue(error)
+    }
   }
-});
+)
 
-export const listUser = createAsyncThunk('user/listUser', async () => {
+export const listUser = createAsyncThunk("user/listUser", async () => {
   try {
-    return await UserAPI.listUser();
+    return await UserAPI.listUser()
   } catch (error) {
     // return rejectWithValue(error);
   }
-});
+})
 
-export const updateUser = createAsyncThunk('user/updateUser', async (payload: UpdateUserPayload) => {
-  return await UserAPI.updateUser(payload);
-});
-
-export const deleteUser = createAsyncThunk('user/deleteUser', async (payload: DeleteUserPayload, { rejectWithValue }) => {
-  try {
-    return await UserAPI.deleteUser(payload);
-  } catch (error) {
-    return rejectWithValue(error);
+export const updateUser = createAsyncThunk(
+  "user/updateUser",
+  async (payload: UpdateUserPayload) => {
+    return await UserAPI.updateUser(payload)
   }
-});
+)
+
+export const deleteUser = createAsyncThunk(
+  "user/deleteUser",
+  async (payload: DeleteUserPayload, {rejectWithValue}) => {
+    try {
+      return await UserAPI.deleteUser(payload)
+    } catch (error) {
+      return rejectWithValue(error)
+    }
+  }
+)
 
 const userSlice = createSlice({
-  name: 'user',
+  name: "user",
   initialState,
   reducers: {},
   extraReducers: builder => {
     builder
       .addCase(createUser.fulfilled, (state, action) => {
-        state.status = 'succeeded';
+        state.status = "succeeded"
       })
       .addCase(createUser.rejected, (state, action) => {
-        state.status = 'failed';
-        state.error = action.error.message || 'Something went wrong';
+        state.status = "failed"
+        state.error = action.error.message || "Something went wrong"
       })
 
       .addCase(listUser.pending, state => {
-        state.status = 'loading';
+        state.status = "loading"
       })
       .addCase(listUser.fulfilled, (state, action) => {
-        state.status = 'succeeded';
-        state.users = action.payload;
+        state.status = "succeeded"
+        state.users = action.payload
       })
       .addCase(listUser.rejected, (state, action) => {
-        state.status = 'failed';
-        state.error = action.error.message || 'Something went wrong';
+        state.status = "failed"
+        state.error = action.error.message || "Something went wrong"
       })
 
       .addCase(updateUser.fulfilled, (state, action) => {
-        state.status = 'succeeded';
+        state.status = "succeeded"
       })
       .addCase(updateUser.rejected, (state, action) => {
-        state.status = 'failed';
-        state.error = action.error.message || 'Something went wrong';
+        state.status = "failed"
+        state.error = action.error.message || "Something went wrong"
       })
 
       .addCase(deleteUser.fulfilled, (state, action) => {
-        state.status = 'succeeded';
+        state.status = "succeeded"
       })
       .addCase(deleteUser.rejected, (state, action) => {
-        state.status = 'failed';
-        state.error = action.error.message || 'Something went wrong';
+        state.status = "failed"
+        state.error = action.error.message || "Something went wrong"
       })
   },
-});
+})
 
-export default userSlice.reducer;
+export default userSlice.reducer

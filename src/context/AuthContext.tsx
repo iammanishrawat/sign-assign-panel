@@ -1,61 +1,46 @@
-import React, { createContext, useContext, useEffect, useState } from 'react';
-import type { ReactNode } from 'react';
+import type {ReactNode} from "react"
+import {createContext, useContext, useEffect, useState} from "react"
 
-interface UserData {
-    name?: string;
-    email?: string;
-    [key: string]: any;
-}
+import {onClickLogout} from "../api/BaseAPI"
 
 interface AuthContextProps {
-    token: string | null;
-    user: UserData | null;
-    setAuthData: (token: string, user: UserData) => void;
-    logout: () => void;
+  token: string | null
+  setAuthData: (token: string) => void
+  logout: () => void
 }
 
-const AuthContext = createContext<AuthContextProps | undefined>(undefined);
+const AuthContext = createContext<AuthContextProps | undefined>(undefined)
 
-export const AuthProvider = ({ children }: { children: ReactNode }) => {
-    const [token, setToken] = useState<string | null>(null);
-    const [user, setUser] = useState<UserData | null>(null);
+export const AuthProvider = ({children}: {children: ReactNode}) => {
+  const [token, setToken] = useState<string | null>(null)
 
-    useEffect(() => {
-        const savedToken = localStorage.getItem('jwtTokenUser');
-        const savedUser = localStorage.getItem('userDataUser');
+  useEffect(() => {
+    const savedToken = localStorage.getItem("jwtTokenUser")
 
-        if (savedToken && savedUser) {
-            setToken(savedToken);
-            setUser(JSON.parse(savedUser));
-        }
-    }, []);
+    if (savedToken) {
+      setToken(savedToken)
+    }
+  }, [])
 
-    const setAuthData = (token: string, user: UserData) => {
-        setToken(token);
-        setUser(user);
-        localStorage.setItem('jwtTokenUser', token);
-        localStorage.setItem('userDataUser', JSON.stringify(user));
-    };
+  const setAuthData = (token: string) => {
+    setToken(token)
+    localStorage.setItem("jwtTokenUser", token)
+  }
 
-    const logout = () => {
-        setToken(null);
-        setUser(null);
-        localStorage.removeItem('jwtTokenUser');
-        localStorage.removeItem('userDataUser');
-        window.location.href = "http://3.109.198.252?event=logout"
-    };
+  const logout = () => {
+    setToken(null)
+    onClickLogout()
+  }
 
-    return (
-        <AuthContext.Provider value={{ token, user, setAuthData, logout }}>
-            {children}
-        </AuthContext.Provider>
-    );
-};
+  return (
+    <AuthContext.Provider value={{token, setAuthData, logout}}>{children}</AuthContext.Provider>
+  )
+}
 
 export const useAuth = (): AuthContextProps => {
-    const context = useContext(AuthContext);
-    if (!context) {
-        throw new Error('useAuth must be used within an AuthProvider');
-    }
-    return context;
-};
+  const context = useContext(AuthContext)
+  if (!context) {
+    throw new Error("useAuth must be used within an AuthProvider")
+  }
+  return context
+}

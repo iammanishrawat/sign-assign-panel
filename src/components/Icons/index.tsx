@@ -6,7 +6,7 @@ import {
   ReceiptText,
   Star,
   ArrowUpRight,
-} from 'lucide-react'
+} from "lucide-react"
 
 type Props = {
   name: string
@@ -15,22 +15,22 @@ type Props = {
   color?: string
 }
 
-export default function Icons({ name, size, onClick, ...rest }: Props) {
+export default function Icons({name, size, onClick, ...rest}: Props) {
   function renderIcon(name: string) {
     switch (name) {
-      case 'ArrowRight':
+      case "ArrowRight":
         return <ArrowRight size={size ?? 16} strokeWidth={2} {...rest} />
-      case 'CircleArrowRight':
+      case "CircleArrowRight":
         return <CircleArrowRight size={size ?? 16} strokeWidth={2} {...rest} />
-      case 'Plus':
+      case "Plus":
         return <Plus size={size ?? 20} strokeWidth={2} {...rest} />
-      case 'MapPin':
+      case "MapPin":
         return <MapPin size={size ?? 20} strokeWidth={2} {...rest} />
-      case 'ReceiptText':
+      case "ReceiptText":
         return <ReceiptText size={size ?? 20} strokeWidth={1.5} {...rest} />
-      case 'Star':
+      case "Star":
         return <Star size={size ?? 20} strokeWidth={2} {...rest} />
-      case 'ArrowUpRight':
+      case "ArrowUpRight":
         return <ArrowUpRight size={size ?? 20} strokeWidth={2} {...rest} />
     }
   }

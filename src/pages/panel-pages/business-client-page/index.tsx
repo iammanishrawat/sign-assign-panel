@@ -1,43 +1,44 @@
-import {
-  Dialog,
-  DialogBackdrop,
-  DialogPanel,
-  DialogTitle,
-} from '@headlessui/react';
-import { useEffect, useState } from 'react';
+import {Dialog, DialogBackdrop, DialogPanel, DialogTitle} from "@headlessui/react"
+import {useEffect, useState} from "react"
 
-import Icons from '../../../components/Icons';
-import { deleteBusinessClient, listBusinessClient, type BusinessClient } from '../../../features/business-client/businessClientSlice';
-import { formatAddress } from '../../../helpers';
-import { useAppDispatch } from '../../../hooks/useAppDispatch';
-import { useAppSelector } from '../../../hooks/useAppSelector';
-import CreateForm from './parts/create-form';
-import './style.scss';
+import Icons from "../../../components/Icons"
+import {
+  deleteBusinessClient,
+  listBusinessClient,
+  type BusinessClient,
+} from "../../../features/business-client/businessClientSlice"
+import {formatAddress} from "../../../helpers"
+import {useAppDispatch} from "../../../hooks/useAppDispatch"
+import {useAppSelector} from "../../../hooks/useAppSelector"
+import CreateForm from "./parts/create-form"
+import "./style.scss"
 
 const BusinessClientPage = () => {
-  const dispatch = useAppDispatch();
-  const { businessClients, status, error } = useAppSelector((state) => state.businessClient);
+  const dispatch = useAppDispatch()
+  const {businessClients, status, error} = useAppSelector(state => state.businessClient)
 
   const [showForm, setShowForm] = useState(false)
   const [open, setOpen] = useState(false)
   const [selectedBusinessClient, setSelectedBusinessClient] = useState<BusinessClient | null>(null)
-  const [selectedBusinessClientIdToDelete, setSelectedBusinessClientIdToDelete] = useState<number | null>(null)
+  const [selectedBusinessClientIdToDelete, setSelectedBusinessClientIdToDelete] = useState<
+    number | null
+  >(null)
 
   useEffect(() => {
-    dispatch(listBusinessClient());
-  }, [dispatch]);
+    dispatch(listBusinessClient())
+  }, [dispatch])
 
   useEffect(() => {
     if (!showForm) {
       setSelectedBusinessClient(null)
-      dispatch(listBusinessClient());
+      dispatch(listBusinessClient())
     }
   }, [showForm])
 
   useEffect(() => {
     if (!open) {
       setSelectedBusinessClientIdToDelete(null)
-      dispatch(listBusinessClient());
+      dispatch(listBusinessClient())
     }
   }, [open])
 
@@ -56,15 +57,17 @@ const BusinessClientPage = () => {
   const onClickDelete = async () => {
     try {
       if (selectedBusinessClientIdToDelete) {
-        const response = await dispatch(deleteBusinessClient({
-          businessClientIds: [selectedBusinessClientIdToDelete]
-        }))
+        const response = await dispatch(
+          deleteBusinessClient({
+            businessClientIds: [selectedBusinessClientIdToDelete],
+          })
+        )
         if (deleteBusinessClient.fulfilled.match(response)) {
-          alert("Business client deleted successfully!");
+          alert("Business client deleted successfully!")
           setOpen(false)
         } else if (deleteBusinessClient.rejected.match(response)) {
           // Handle error here
-          alert(response.payload); // this is what you returned with rejectWithValue
+          alert(response.payload) // this is what you returned with rejectWithValue
         }
       }
     } catch (error) {
@@ -85,10 +88,13 @@ const BusinessClientPage = () => {
           <div className="address-card">
             {businessClients?.map((businessClient, index) => (
               <div className="inner" key={index}>
-                <h6>{businessClient?.firstName}{(businessClient?.lastName ?? "").trim() !== "" ? ` ${businessClient?.lastName}` : ""}</h6>
-                <p>
-                  {formatAddress(businessClient)}
-                </p>
+                <h6>
+                  {businessClient?.firstName}
+                  {(businessClient?.lastName ?? "").trim() !== ""
+                    ? ` ${businessClient?.lastName}`
+                    : ""}
+                </h6>
+                <p>{formatAddress(businessClient)}</p>
                 <p>
                   <span>Phone Number:</span> {businessClient?.mobile}
                 </p>
@@ -96,10 +102,22 @@ const BusinessClientPage = () => {
                   <span>Email ID:</span> {businessClient?.email}
                 </p>
                 <div className="button-group">
-                  <button type="button" onClick={() => businessClient ? handleAddNewClick(businessClient) : {}}>
+                  <button
+                    type="button"
+                    onClick={() => (businessClient ? handleAddNewClick(businessClient) : {})}
+                  >
                     Edit
                   </button>
-                  <button type="button" onClick={() => businessClient?.businessClientId ? handleDeleteItem(businessClient.businessClientId) : {}}>Delete</button>
+                  <button
+                    type="button"
+                    onClick={() =>
+                      businessClient?.businessClientId
+                        ? handleDeleteItem(businessClient.businessClientId)
+                        : {}
+                    }
+                  >
+                    Delete
+                  </button>
                 </div>
               </div>
             ))}
@@ -129,17 +147,13 @@ const BusinessClientPage = () => {
                     <i className="fi fi-rr-triangle-warning"></i>
                   </div>
                   <div className="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
-                    <DialogTitle
-                      as="h3"
-                      className="text-base font-semibold text-gray-900"
-                    >
+                    <DialogTitle as="h3" className="text-base font-semibold text-gray-900">
                       Delete client
                     </DialogTitle>
                     <div className="mt-2">
                       <p className="text-sm text-gray-500">
-                        Are you sure you want to delete this client? All of
-                        your data will be permanently removed. This action
-                        cannot be undone.
+                        Are you sure you want to delete this client? All of your data will be
+                        permanently removed. This action cannot be undone.
                       </p>
                     </div>
                   </div>

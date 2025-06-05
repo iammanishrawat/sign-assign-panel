@@ -1,12 +1,12 @@
-import { useState } from 'react';
+import {useState} from "react"
 
-import { useAppDispatch } from '../../../../../hooks/useAppDispatch';
-import { changePassword } from '../../../../..//features/auth/authSlice';
-import Icons from '../../../../../components/Icons'
-import '../../style.scss'
+import {useAppDispatch} from "../../../../../hooks/useAppDispatch"
+import {changePassword} from "../../../../..//features/auth/authSlice"
+import Icons from "../../../../../components/Icons"
+import "../../style.scss"
 
 const ChangePasswordTab = () => {
-  const dispatch = useAppDispatch();
+  const dispatch = useAppDispatch()
 
   const [currentPassword, setCurrentPassword] = useState<string>("")
   const [newPassword, setNewPassword] = useState<string>("")
@@ -29,7 +29,9 @@ const ChangePasswordTab = () => {
     }
 
     if (currentPassword.trim() === newPassword.trim()) {
-      alert("New password is same as current password. Please enter a different new password to continue!")
+      alert(
+        "New password is same as current password. Please enter a different new password to continue!"
+      )
       return false
     }
 
@@ -44,15 +46,17 @@ const ChangePasswordTab = () => {
   const onClickSubmit = async () => {
     try {
       if (validateForm()) {
-        const response = await dispatch(changePassword({
-          currentPassword: currentPassword.trim(),
-          newPassword: newPassword.trim()
-        }))
+        const response = await dispatch(
+          changePassword({
+            currentPassword: currentPassword.trim(),
+            newPassword: newPassword.trim(),
+          })
+        )
         if (changePassword.fulfilled.match(response)) {
-          alert("Password changed successfully!");
+          alert("Password changed successfully!")
         } else if (changePassword.rejected.match(response)) {
           // Handle error here
-          alert(response.payload); // this is what you returned with rejectWithValue
+          alert(response.payload) // this is what you returned with rejectWithValue
         }
       }
     } catch (error) {
@@ -67,30 +71,46 @@ const ChangePasswordTab = () => {
           <label htmlFor="">
             Current Password <span>*</span>
           </label>
-          <input type="password" className="w-full" value={currentPassword} onChange={(e) => setCurrentPassword(e.target.value ?? "")} />
+          <input
+            type="password"
+            className="w-full"
+            value={currentPassword}
+            onChange={e => setCurrentPassword(e.target.value ?? "")}
+          />
         </div>
         <div className="form-group">
           <label htmlFor="">
             New Password <span>*</span>
           </label>
-          <input type="password" className="w-full" value={newPassword} onChange={(e) => setNewPassword(e.target.value ?? "")} />
+          <input
+            type="password"
+            className="w-full"
+            value={newPassword}
+            onChange={e => setNewPassword(e.target.value ?? "")}
+          />
         </div>
         <div className="form-group">
           <label htmlFor="">
             Confirm Password <span>*</span>
           </label>
-          <input type="password" className="w-full" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value ?? "")} />
+          <input
+            type="password"
+            className="w-full"
+            value={confirmPassword}
+            onChange={e => setConfirmPassword(e.target.value ?? "")}
+          />
         </div>
       </div>
       <div className="password-norms-area">
         <p>Password must meet the following requirements:</p>
         <h6>
-          <Icons name="CircleArrowRight" /> Password must have at least 6
-          characters.
+          <Icons name="CircleArrowRight" /> Password must have at least 6 characters.
         </h6>
       </div>
       <div className="button-group">
-        <button type="button" onClick={onClickSubmit}>Submit</button>
+        <button type="button" onClick={onClickSubmit}>
+          Submit
+        </button>
       </div>
     </form>
   )

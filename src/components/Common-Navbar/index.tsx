@@ -1,25 +1,25 @@
-import { faEnvelope, faPhone, faStar } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import {faEnvelope, faPhone, faStar} from "@fortawesome/free-solid-svg-icons"
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
+import {useEffect} from "react"
+import {Link} from "react-router-dom"
 
-import logo from '../../assets/images/website-images/logo.png'
-import { useAuth } from '../../context/AuthContext'
-import { listProductCategory } from '../../features/product-category/productCategorySlice'
-import { getLinkFromName } from '../../helpers'
-import { useAppDispatch } from '../../hooks/useAppDispatch'
-import { useAppSelector } from '../../hooks/useAppSelector'
-import './style.scss'
+import logo from "../../assets/images/website-images/logo.png"
+import {useAuth} from "../../context/AuthContext"
+import {listProductCategory} from "../../features/product-category/productCategorySlice"
+import {getLinkFromName} from "../../helpers"
+import {useAppDispatch} from "../../hooks/useAppDispatch"
+import {useAppSelector} from "../../hooks/useAppSelector"
+import "./style.scss"
 
 const CommonNavbarComponent = () => {
-  const { user, logout } = useAuth();
+  const {logout} = useAuth()
 
-  const dispatch = useAppDispatch();
-  const { productCategories, status, error } = useAppSelector((state) => state.productCategory);
+  const dispatch = useAppDispatch()
+  const {productCategories, status, error} = useAppSelector(state => state.productCategory)
 
   useEffect(() => {
-    dispatch(listProductCategory());
-  }, [dispatch]);
+    dispatch(listProductCategory())
+  }, [dispatch])
 
   return (
     <div>
@@ -66,11 +66,7 @@ const CommonNavbarComponent = () => {
           </div>
           <div className="right-area">
             <div className="search-bar">
-              <input
-                type="text"
-                placeholder="Search here..."
-                className="form-control"
-              />
+              <input type="text" placeholder="Search here..." className="form-control" />
             </div>
             <div className="menu-links">
               <ul>
@@ -80,7 +76,7 @@ const CommonNavbarComponent = () => {
                 <li className="dropdown">
                   <Link to="#">Service</Link>
                   <ul className="dropdown-content">
-                    {Array.from({ length: 5 }).map((_, i) => (
+                    {Array.from({length: 5}).map((_, i) => (
                       <li className="dropdown-lists" key={i}>
                         <Link to="#">Sign Installation</Link>
                       </li>
@@ -103,7 +99,7 @@ const CommonNavbarComponent = () => {
                 to="/dashboard"
                 className="profile-icon"
                 title="Profile"
-                style={{ cursor: 'pointer' }}
+                style={{cursor: "pointer"}}
               >
                 <i className="fi fi-rs-user-gear"></i>
               </Link>
@@ -113,9 +109,9 @@ const CommonNavbarComponent = () => {
                 className="logout-icon"
                 title="Logout"
                 style={{
-                  background: 'none',
-                  border: 'none',
-                  cursor: 'pointer',
+                  background: "none",
+                  border: "none",
+                  cursor: "pointer",
                   padding: 0,
                 }}
                 aria-label="Logout"
@@ -167,21 +163,14 @@ const CommonNavbarComponent = () => {
                               <input id="group-1" type="checkbox" hidden />
                               <label htmlFor="group-1">
                                 <span>
-                                  <i
-                                    className="fa fa-chevron-right"
-                                    aria-hidden="true"
-                                  ></i>
+                                  <i className="fa fa-chevron-right" aria-hidden="true"></i>
                                 </span>
                                 Services
                               </label>
                               <ul className="group-list">
-                                {Array.from({ length: 6 }).map((_, i) => (
+                                {Array.from({length: 6}).map((_, i) => (
                                   <li key={`services-${i}`}>
-                                    <input
-                                      id={`service-sub-group-${i}`}
-                                      type="checkbox"
-                                      hidden
-                                    />
+                                    <input id={`service-sub-group-${i}`} type="checkbox" hidden />
                                     <label htmlFor={`service-sub-group-${i}`}>
                                       Sign Installation
                                     </label>
@@ -193,34 +182,25 @@ const CommonNavbarComponent = () => {
                               <input id="group-2" type="checkbox" hidden />
                               <label htmlFor="group-2">
                                 <span>
-                                  <i
-                                    className="fa fa-chevron-right"
-                                    aria-hidden="true"
-                                  ></i>
+                                  <i className="fa fa-chevron-right" aria-hidden="true"></i>
                                 </span>
                                 Products
                               </label>
                               <ul className="group-list">
                                 {[
-                                  'Banner',
-                                  'Window Products',
-                                  'Vehicle Products',
-                                  'Marketing Tools',
-                                  'Event Signs',
-                                  'Indoor Signs',
-                                  'Hardwares',
-                                  'Direct Printing on Material',
-                                  'Direct Printing on Material',
+                                  "Banner",
+                                  "Window Products",
+                                  "Vehicle Products",
+                                  "Marketing Tools",
+                                  "Event Signs",
+                                  "Indoor Signs",
+                                  "Hardwares",
+                                  "Direct Printing on Material",
+                                  "Direct Printing on Material",
                                 ].map((product, i) => (
                                   <li key={`product-${i}`}>
-                                    <input
-                                      id={`product-sub-group-${i}`}
-                                      type="checkbox"
-                                      hidden
-                                    />
-                                    <label htmlFor={`product-sub-group-${i}`}>
-                                      {product}
-                                    </label>
+                                    <input id={`product-sub-group-${i}`} type="checkbox" hidden />
+                                    <label htmlFor={`product-sub-group-${i}`}>{product}</label>
                                   </li>
                                 ))}
                               </ul>
@@ -250,13 +230,21 @@ const CommonNavbarComponent = () => {
       <nav className="mega-menu">
         <div className="container-fluid">
           <ul id="navbarCategoryMenuListContainer">
-            {productCategories?.map((productCategory) => (
+            {productCategories?.map(productCategory => (
               <li className="dropdown">
-                <Link to={`${import.meta.env.VITE_BASE_PATH_WEB}/category/${getLinkFromName(productCategory.name)}`}>{productCategory.name}</Link>
+                <Link
+                  to={`${import.meta.env.VITE_BASE_PATH_WEB}/category/${getLinkFromName(productCategory.name)}`}
+                >
+                  {productCategory.name}
+                </Link>
                 <ul className="dropdown-content">
-                  {productCategory.productSubCategories?.map((productSubCategory) => (
+                  {productCategory.productSubCategories?.map(productSubCategory => (
                     <li className="dropdown-lists">
-                      <Link to={`${import.meta.env.VITE_BASE_PATH_WEB}/subcategory/${getLinkFromName(productSubCategory.name)}`}>{productSubCategory.name}</Link>
+                      <Link
+                        to={`${import.meta.env.VITE_BASE_PATH_WEB}/subcategory/${getLinkFromName(productSubCategory.name)}`}
+                      >
+                        {productSubCategory.name}
+                      </Link>
                     </li>
                   ))}
                 </ul>

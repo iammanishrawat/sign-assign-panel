@@ -1,8 +1,8 @@
-import Icons from '../../../components/Icons'
-import visaIcon from '../../../assets/images/panel-images/visa.svg'
-import ratingIcon from '../../../assets/images/panel-images/Rating.svg'
-import './style.scss'
-import { useState } from 'react'
+import Icons from "../../../components/Icons"
+import visaIcon from "../../../assets/images/panel-images/visa.svg"
+import ratingIcon from "../../../assets/images/panel-images/Rating.svg"
+import "./style.scss"
+import {useState} from "react"
 
 const OrderPage = () => {
   const [showDetails, setShowDetails] = useState(false)
@@ -193,20 +193,14 @@ const OrderPage = () => {
             <div className="inner-area">
               <p>Billing</p>
               <h6>Address</h6>
-              <h5>
-                Africa Ave, Diplomatic Enclave, Chanakyapuri, New Delhi, Delhi
-                110023, India
-              </h5>
+              <h5>Africa Ave, Diplomatic Enclave, Chanakyapuri, New Delhi, Delhi 110023, India</h5>
               <h6>Delivery Method</h6>
               <h5>Free (30 days)</h5>
             </div>
             <div className="inner-area">
               <p>Delivery</p>
               <h6>Address</h6>
-              <h5>
-                Africa Ave, Diplomatic Enclave, Chanakyapuri, New Delhi, Delhi
-                110023, India
-              </h5>
+              <h5>Africa Ave, Diplomatic Enclave, Chanakyapuri, New Delhi, Delhi 110023, India</h5>
               <h6>Delivery Method</h6>
               <h5>Free (30 days)</h5>
             </div>

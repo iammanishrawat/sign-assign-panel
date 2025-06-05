@@ -23,7 +23,7 @@
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true,
 
-    "noImplicitAny": false,
+    "noImplicitAny": false
   },
   "include": ["src"]
 }

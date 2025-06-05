@@ -1,9 +1,9 @@
-import SidebarComponent from '../components/Sidebar'
-import HeaderComponent from '../components/Header'
-import CommonNavbarComponent from '../components/Common-Navbar'
-import CommonFooterComponent from '../components/Common-Footer'
-import '../panelCommon.scss'
-import { Outlet } from 'react-router-dom'
+import SidebarComponent from "../components/Sidebar"
+import HeaderComponent from "../components/Header"
+import CommonNavbarComponent from "../components/Common-Navbar"
+import CommonFooterComponent from "../components/Common-Footer"
+import "../panelCommon.scss"
+import {Outlet} from "react-router-dom"
 
 const PanelLayout = () => {
   return (

@@ -1,43 +1,44 @@
-import {
-  Dialog,
-  DialogBackdrop,
-  DialogPanel,
-  DialogTitle,
-} from '@headlessui/react';
-import { useEffect, useState } from 'react';
+import {Dialog, DialogBackdrop, DialogPanel, DialogTitle} from "@headlessui/react"
+import {useEffect, useState} from "react"
 
-import Icons from '../../../components/Icons';
-import { deleteUserAddress, listUserAddress, type UserAddress } from '../../../features/user-address/userAddressSlice';
-import { formatAddress } from '../../../helpers';
-import { useAppDispatch } from '../../../hooks/useAppDispatch';
-import { useAppSelector } from '../../../hooks/useAppSelector';
-import CreateAddressForm from './parts/create-address-form';
-import './style.scss';
+import Icons from "../../../components/Icons"
+import {
+  deleteUserAddress,
+  listUserAddress,
+  type UserAddress,
+} from "../../../features/user-address/userAddressSlice"
+import {formatAddress} from "../../../helpers"
+import {useAppDispatch} from "../../../hooks/useAppDispatch"
+import {useAppSelector} from "../../../hooks/useAppSelector"
+import CreateAddressForm from "./parts/create-address-form"
+import "./style.scss"
 
 const AddressBookPage = () => {
-  const dispatch = useAppDispatch();
-  const { userAddresses, status, error } = useAppSelector((state) => state.userAddress);
+  const dispatch = useAppDispatch()
+  const {userAddresses, status, error} = useAppSelector(state => state.userAddress)
 
   const [showForm, setShowForm] = useState(false)
   const [open, setOpen] = useState(false)
   const [selectedUserAddress, setSelectedUserAddress] = useState<UserAddress | null>(null)
-  const [selectedUserAddressIdToDelete, setSelectedUserAddressIdToDelete] = useState<number | null>(null)
+  const [selectedUserAddressIdToDelete, setSelectedUserAddressIdToDelete] = useState<number | null>(
+    null
+  )
 
   useEffect(() => {
-    dispatch(listUserAddress());
-  }, [dispatch]);
+    dispatch(listUserAddress())
+  }, [dispatch])
 
   useEffect(() => {
     if (!showForm) {
       setSelectedUserAddress(null)
-      dispatch(listUserAddress());
+      dispatch(listUserAddress())
     }
   }, [showForm])
 
   useEffect(() => {
     if (!open) {
       setSelectedUserAddressIdToDelete(null)
-      dispatch(listUserAddress());
+      dispatch(listUserAddress())
     }
   }, [open])
 
@@ -56,15 +57,17 @@ const AddressBookPage = () => {
   const onClickDelete = async () => {
     try {
       if (selectedUserAddressIdToDelete) {
-        const response = await dispatch(deleteUserAddress({
-          userAddressIds: [selectedUserAddressIdToDelete]
-        }))
+        const response = await dispatch(
+          deleteUserAddress({
+            userAddressIds: [selectedUserAddressIdToDelete],
+          })
+        )
         if (deleteUserAddress.fulfilled.match(response)) {
-          alert("Address deleted successfully!");
+          alert("Address deleted successfully!")
           setOpen(false)
         } else if (deleteUserAddress.rejected.match(response)) {
           // Handle error here
-          alert(response.payload); // this is what you returned with rejectWithValue
+          alert(response.payload) // this is what you returned with rejectWithValue
         }
       }
     } catch (error) {
@@ -85,18 +88,29 @@ const AddressBookPage = () => {
           <div className="address-card">
             {userAddresses?.map((userAddress, index) => (
               <div className="inner" key={index}>
-                <h6>{userAddress?.firstName}{(userAddress?.lastName ?? "").trim() !== "" ? ` ${userAddress?.lastName}` : ""}</h6>
-                <p>
-                  {formatAddress(userAddress)}
-                </p>
+                <h6>
+                  {userAddress?.firstName}
+                  {(userAddress?.lastName ?? "").trim() !== "" ? ` ${userAddress?.lastName}` : ""}
+                </h6>
+                <p>{formatAddress(userAddress)}</p>
                 <p>
                   <span>Phone Number:</span> {userAddress?.phoneNumber}
                 </p>
                 <div className="button-group">
-                  <button type="button" onClick={() => userAddress ? handleAddNewClick(userAddress) : {}}>
+                  <button
+                    type="button"
+                    onClick={() => (userAddress ? handleAddNewClick(userAddress) : {})}
+                  >
                     Edit
                   </button>
-                  <button type="button" onClick={() => userAddress?.userAddressId ? handleDeleteItem(userAddress.userAddressId) : {}}>Delete</button>
+                  <button
+                    type="button"
+                    onClick={() =>
+                      userAddress?.userAddressId ? handleDeleteItem(userAddress.userAddressId) : {}
+                    }
+                  >
+                    Delete
+                  </button>
                 </div>
               </div>
             ))}
@@ -126,17 +140,13 @@ const AddressBookPage = () => {
                     <i className="fi fi-rr-triangle-warning"></i>
                   </div>
                   <div className="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
-                    <DialogTitle
-                      as="h3"
-                      className="text-base font-semibold text-gray-900"
-                    >
+                    <DialogTitle as="h3" className="text-base font-semibold text-gray-900">
                       Delete address
                     </DialogTitle>
                     <div className="mt-2">
                       <p className="text-sm text-gray-500">
-                        Are you sure you want to delete your address? All of
-                        your data will be permanently removed. This action
-                        cannot be undone.
+                        Are you sure you want to delete your address? All of your data will be
+                        permanently removed. This action cannot be undone.
                       </p>
                     </div>
                   </div>

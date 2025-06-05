@@ -1,20 +1,17 @@
-export const getUserFromLocalStorage = () => {
-    try {
-        const params = new URLSearchParams(window.location.search);
-        const token = params.get('token');
-        const userData = params.get('user');
+export const getUserFromLocalStorage = (): string | null => {
+  try {
+    const params = new URLSearchParams(window.location.search)
+    const tokenFromUrl = params.get("token")
 
-        if (token && userData) {
-            localStorage.setItem('jwtTokenUser', token);
-            localStorage.setItem('userDataUser', userData);
-            console.log("Token and user data stored.");
-        } else {
-            console.warn("Token or user data missing in URL");
-        }
-
-        return { token, userData };
-    } catch (error) {
-        console.error('Error reading from localStorage:', error);
-        return { token: null, userData: null };
+    if (tokenFromUrl && tokenFromUrl.trim() !== "") {
+      localStorage.setItem("jwtTokenUser", tokenFromUrl)
+      console.log("Token from URL stored in localStorage")
     }
-};
+
+    const storedToken = localStorage.getItem("jwtTokenUser")
+    return storedToken && storedToken.trim() !== "" ? storedToken : null
+  } catch (error) {
+    console.error("Error accessing localStorage:", error)
+    return null
+  }
+}
