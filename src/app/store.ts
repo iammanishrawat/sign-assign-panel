@@ -5,6 +5,7 @@ import userReducer from "../features/user/userSlice"
 import userAddressReducer from "../features/user-address/userAddressSlice"
 import businessClientReducer from "../features/business-client/businessClientSlice"
 import productCategoryReducer from "../features/product-category/productCategorySlice"
+import orderReducer from "../features/order/orderSlice"
 
 export const store = configureStore({
   reducer: {
@@ -13,6 +14,7 @@ export const store = configureStore({
     userAddress: userAddressReducer,
     businessClient: businessClientReducer,
     productCategory: productCategoryReducer,
+    order: orderReducer,
   },
 })
 

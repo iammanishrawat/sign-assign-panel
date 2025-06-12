@@ -1,135 +1,115 @@
-import Icons from "../../../components/Icons"
+import {useEffect, useState} from "react"
+
 import visaIcon from "../../../assets/images/panel-images/visa.svg"
-import ratingIcon from "../../../assets/images/panel-images/Rating.svg"
+import Icons from "../../../components/Icons"
+import {listOrder, type Order} from "../../../features/order/orderSlice"
+import {useAppDispatch} from "../../../hooks/useAppDispatch"
+import {useAppSelector} from "../../../hooks/useAppSelector"
 import "./style.scss"
-import {useState} from "react"
+import {formatDateWithoutTime} from "../../../helpers"
 
 const OrderPage = () => {
-  const [showDetails, setShowDetails] = useState(false)
+  const dispatch = useAppDispatch()
+  const {orders, status, error} = useAppSelector(state => state.order)
 
-  const handleViewDetails = () => {
-    setShowDetails(true)
+  const [showDetails, setShowDetails] = useState<boolean>(false)
+  const [selectedOrder, setSelectedOrder] = useState<Order | null>(null)
+
+  useEffect(() => {
+    dispatch(listOrder())
+  }, [dispatch])
+
+  const handleViewDetails = (orderId: number) => {
+    const order = orders?.find(order => order.orderId === orderId)
+    if (order) {
+      const transactionResponseDataJson =
+        typeof order.transaction?.responseDataJson === "string"
+          ? JSON.parse(order.transaction?.responseDataJson)
+          : order.transaction?.responseDataJson
+      const amountDetailsJson =
+        typeof order.amountDetails === "string"
+          ? JSON.parse(order.amountDetails)
+          : order.amountDetails
+
+      setSelectedOrder({
+        ...order,
+        amountDetails: amountDetailsJson,
+        transaction: {
+          ...order.transaction,
+          responseDataJson: transactionResponseDataJson,
+        },
+      })
+
+      setShowDetails(true)
+    }
   }
 
-  // const handleBackToOrders = () => {
-  //   setShowDetails(false)
-  // }
   return (
     <>
       {!showDetails && (
         <div className="order-card">
           <h6>My Orders</h6>
-          <div className="inner">
-            <div className="top-area">
-              <div className="left-area">
-                <p>Order ID: #123456</p>
-              </div>
-              <div className="right-area">
-                <button type="button">Estimate Arrival: 15 June, 2025</button>
-                <button type="button" className="delivered-btn">
-                  Delivered
-                </button>
-              </div>
-            </div>
-            <div className="bottom-area">
-              <div className="left-area">
-                <img src="https://placehold.co/300x200" alt="" />
-                <div>
-                  <h5>Rectangle Flag</h5>
-                  <p>
-                    Size (W X H): <span>3' X 2'(FT)</span>
-                  </p>
-                  <h4>$12.00</h4>
+          {orders?.map(order => {
+            const orderFirstProduct = order.orderProducts[0]
+            const orderFirstProductDataJson =
+              typeof orderFirstProduct.dataJson === "string"
+                ? JSON.parse(orderFirstProduct.dataJson)
+                : orderFirstProduct.dataJson
+            const productFirstImage: string =
+              orderFirstProduct.product.productMedias.find(
+                productMedia => productMedia.mediaType.indexOf("image") >= 0
+              )?.mediaUrl ?? "https://placehold.co/300x200"
+
+            return (
+              <div className="inner" key={order.orderId}>
+                <div className="top-area">
+                  <div className="left-area">
+                    <p>Order ID: #{order.referenceNumber}</p>
+                  </div>
+                  <div className="right-area">
+                    <button type="button">Estimate Arrival: 15 June, 2025</button>
+                    {order.orderStatus === "delivered" ? (
+                      <button type="button" className="delivered-btn">
+                        Delivered
+                      </button>
+                    ) : (
+                      ""
+                    )}
+                  </div>
+                </div>
+                <div className="bottom-area">
+                  <div className="left-area">
+                    <img src={productFirstImage} alt={orderFirstProduct.product.name} />
+                    <div>
+                      <h5>{orderFirstProduct.product.name}</h5>
+                      <p>
+                        Size (W X H): <span>3' X 2'(FT)</span>
+                      </p>
+                      <h4>${orderFirstProductDataJson.payablePriceByQuantityAfterDiscount}</h4>
+                    </div>
+                  </div>
+                  <div className="right-area">
+                    <button type="button" onClick={() => handleViewDetails(order.orderId)}>
+                      View Details
+                    </button>
+                    <h6>
+                      <Icons name="MapPin" />
+                      London, UK
+                    </h6>
+                  </div>
                 </div>
               </div>
-              <div className="right-area">
-                <button type="button" onClick={handleViewDetails}>
-                  View Details
-                </button>
-                <h6>
-                  <Icons name="MapPin" />
-                  London, UK
-                </h6>
-              </div>
-            </div>
-          </div>
-          <div className="inner">
-            <div className="top-area">
-              <div className="left-area">
-                <p>Order ID: #123456</p>
-              </div>
-              <div className="right-area">
-                <button type="button">Estimate Arrival: 15 June, 2025</button>
-                <button type="button" className="processed-btn">
-                  On Process
-                </button>
-              </div>
-            </div>
-            <div className="bottom-area">
-              <div className="left-area">
-                <img src="https://placehold.co/300x200" alt="" />
-                <div>
-                  <h5>Rectangle Flag</h5>
-                  <p>
-                    Size (W X H): <span>3' X 2'(FT)</span>
-                  </p>
-                  <h4>$12.00</h4>
-                </div>
-              </div>
-              <div className="right-area">
-                <button type="button" onClick={handleViewDetails}>
-                  View Details
-                </button>
-                <h6>
-                  <Icons name="MapPin" />
-                  London, UK
-                </h6>
-              </div>
-            </div>
-          </div>
-          <div className="inner">
-            <div className="top-area">
-              <div className="left-area">
-                <p>Order ID: #123456</p>
-              </div>
-              <div className="right-area">
-                <button type="button">Estimate Arrival: 15 June, 2025</button>
-                <button type="button" className="cancelled-btn">
-                  Cancelled
-                </button>
-              </div>
-            </div>
-            <div className="bottom-area">
-              <div className="left-area">
-                <img src="https://placehold.co/300x200" alt="" />
-                <div>
-                  <h5>Rectangle Flag</h5>
-                  <p>
-                    Size (W X H): <span>3' X 2'(FT)</span>
-                  </p>
-                  <h4>$12.00</h4>
-                </div>
-              </div>
-              <div className="right-area">
-                <button type="button" onClick={handleViewDetails}>
-                  View Details
-                </button>
-                <h6>
-                  <Icons name="MapPin" />
-                  London, UK
-                </h6>
-              </div>
-            </div>
-          </div>
+            )
+          })}
         </div>
       )}
 
-      {showDetails && (
+      {showDetails && selectedOrder && (
         <div className="order-detail-page">
           <div className="track-order-area">
             <div className="left-area">
-              <h2>Order ID: #1234567</h2>
-              <h6>Order date: 05 May, 2025</h6>
+              <h2>Order ID: #{selectedOrder.referenceNumber}</h2>
+              <h6>Order date: {formatDateWithoutTime(selectedOrder.createdAt)}</h6>
             </div>
             <div className="right-area">
               <button type="button">
@@ -142,52 +122,62 @@ const OrderPage = () => {
             </div>
           </div>
           <div className="product-detail-area">
-            <div className="inner">
-              <div className="left-area">
-                <img src="https://placehold.co/300x200" alt="" />
-                <div>
-                  <h5>Custom Vinyl Banner</h5>
-                  <p>
-                    Size (W X H): <span>3' X 2'(FT)</span> | Choose Material:
-                    <span>Vinyl Print</span>
-                  </p>
-                  <p>
-                    Sides: <span>Single Sided</span> | Upgrade to Premium:
-                    <span>Standard 13 Oz</span>
-                  </p>
-                  <p>
-                    Hanging OPtions: <span>Metal Grommets</span>
-                  </p>
+            {selectedOrder.orderProducts.map(orderProduct => {
+              const orderProductDataJson =
+                typeof orderProduct.dataJson === "string"
+                  ? JSON.parse(orderProduct.dataJson)
+                  : orderProduct.dataJson
+              const productFirstImage: string =
+                orderProduct.product.productMedias.find(
+                  productMedia => productMedia.mediaType.indexOf("image") >= 0
+                )?.mediaUrl ?? "https://placehold.co/300x200"
+
+              const selectedAttrs = orderProductDataJson.selectedAttributes
+
+              // Dynamically create HTML for selected attributes
+              const attributesHtml = selectedAttrs
+                .map(attr => {
+                  let displayValue = attr.value
+
+                  if (attr.attribute.type === "dimension") {
+                    try {
+                      const val = JSON.parse(attr.value)
+                      displayValue = `${val.width} X ${val.height} (FT)`
+                    } catch (e) {
+                      displayValue = attr.value
+                    }
+                  }
+
+                  return `${attr.attribute.name}: <span>${displayValue}</span>`
+                })
+                .reduce((acc: string[], curr, index) => {
+                  if (index % 2 === 0) {
+                    // Start new line with current item
+                    acc.push(curr)
+                  } else {
+                    // Append to last line
+                    acc[acc.length - 1] += ` | ${curr}`
+                  }
+                  return acc
+                }, [])
+                .join("<br/>")
+
+              return (
+                <div className="inner">
+                  <div className="left-area">
+                    <img src={productFirstImage} alt={orderProduct.product.name} />
+                    <div>
+                      <h5>{orderProduct.product.name}</h5>
+                      <p dangerouslySetInnerHTML={{__html: attributesHtml}}></p>
+                    </div>
+                  </div>
+                  <div className="right-area">
+                    <h4>${orderProductDataJson.payablePriceByQuantityAfterDiscount}</h4>
+                    <h6>Qty: {orderProductDataJson.quantity}</h6>
+                  </div>
                 </div>
-              </div>
-              <div className="right-area">
-                <h4>$2500.00</h4>
-                <h6>Qty: 10</h6>
-              </div>
-            </div>
-            <div className="inner">
-              <div className="left-area">
-                <img src="https://placehold.co/300x200" alt="" />
-                <div>
-                  <h5>Custom Vinyl Banner</h5>
-                  <p>
-                    Size (W X H): <span>3' X 2'(FT)</span> | Choose Material:
-                    <span>Vinyl Print</span>
-                  </p>
-                  <p>
-                    Sides: <span>Single Sided</span> | Upgrade to Premium:
-                    <span>Standard 13 Oz</span>
-                  </p>
-                  <p>
-                    Hanging OPtions: <span>Metal Grommets</span>
-                  </p>
-                </div>
-              </div>
-              <div className="right-area">
-                <h4>$2500.00</h4>
-                <h6>Qty: 10</h6>
-              </div>
-            </div>
+              )
+            })}
           </div>
           <div className="address-area">
             <div className="inner-area">
@@ -247,7 +237,9 @@ const OrderPage = () => {
             <div className="left-area">
               <p>Payment</p>
               <h6>
-                Visa **40 <img src={visaIcon} alt="" />
+                {selectedOrder.transaction?.responseDataJson?.source?.brand} **
+                {selectedOrder.transaction?.responseDataJson?.source?.last4}{" "}
+                <img src={visaIcon} alt="" />
               </h6>
             </div>
             <div className="right-area">
@@ -255,11 +247,11 @@ const OrderPage = () => {
               <div className="inner">
                 <div className="table-flex">
                   <p>Subtotal</p>
-                  <p>$50000.00</p>
+                  <p>${selectedOrder.amountDetails?.subTotalPrice ?? 0}</p>
                 </div>
                 <div className="table-flex">
                   <h6>Discount</h6>
-                  <h6>$1000.00</h6>
+                  <h6>${selectedOrder.amountDetails?.businessDiscountPrice ?? 0}</h6>
                 </div>
                 <div className="table-flex">
                   <h6>Delivery</h6>
@@ -267,11 +259,11 @@ const OrderPage = () => {
                 </div>
                 <div className="table-flex">
                   <h6>Tax</h6>
-                  <h6>+$300.00</h6>
+                  <h6>+$0.00</h6>
                 </div>
                 <div className="table-flex">
                   <p>Total</p>
-                  <p>$43000.00</p>
+                  <p>${selectedOrder.amountDetails?.grandTotalPrice ?? 0}</p>
                 </div>
               </div>
             </div>
