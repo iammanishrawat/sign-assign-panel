@@ -49,6 +49,11 @@ const OrderPage = () => {
     }
   }
 
+  const onClickBackToList = () => {
+    setShowDetails(false)
+    setSelectedOrder(null)
+  }
+
   return (
     <>
       {!showDetails && (
@@ -111,6 +116,12 @@ const OrderPage = () => {
 
       {showDetails && selectedOrder && (
         <div className="order-detail-page">
+          <div className="top-actions">
+            <button type="button" onClick={() => onClickBackToList()} className="back-btn">
+              ← Back to Orders
+            </button>
+          </div>
+
           <div className="track-order-area">
             <div className="left-area">
               <h2>Order ID: #{selectedOrder.referenceNumber}</h2>
