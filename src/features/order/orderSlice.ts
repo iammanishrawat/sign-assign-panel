@@ -14,6 +14,8 @@ export type Order = {
   referenceNumber?: string | null
   amount: number
   amountDetails?: any
+  shippingAddressId?: number
+  shippingAddressDetails: any
   orderStatus: OrderStatus
   paymentStatus: PaymentStatus
   status: boolean

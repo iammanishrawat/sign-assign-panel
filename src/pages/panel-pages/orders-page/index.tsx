@@ -3,10 +3,10 @@ import {useEffect, useState} from "react"
 import visaIcon from "../../../assets/images/panel-images/visa.svg"
 import Icons from "../../../components/Icons"
 import {listOrder, type Order} from "../../../features/order/orderSlice"
+import {formatAddressWithName, formatDateWithoutTime} from "../../../helpers"
 import {useAppDispatch} from "../../../hooks/useAppDispatch"
 import {useAppSelector} from "../../../hooks/useAppSelector"
 import "./style.scss"
-import {formatDateWithoutTime} from "../../../helpers"
 
 const OrderPage = () => {
   const dispatch = useAppDispatch()
@@ -30,10 +30,15 @@ const OrderPage = () => {
         typeof order.amountDetails === "string"
           ? JSON.parse(order.amountDetails)
           : order.amountDetails
+      const shippingAddressDetailsJson =
+        typeof order.shippingAddressDetails === "string"
+          ? JSON.parse(order.shippingAddressDetails)
+          : order.shippingAddressDetails
 
       setSelectedOrder({
         ...order,
         amountDetails: amountDetailsJson,
+        shippingAddressDetails: shippingAddressDetailsJson,
         transaction: {
           ...order.transaction,
           responseDataJson: transactionResponseDataJson,
@@ -94,7 +99,7 @@ const OrderPage = () => {
                     </button>
                     <h6>
                       <Icons name="MapPin" />
-                      London, UK
+                      {formatAddressWithName(order.shippingAddressDetails)}
                     </h6>
                   </div>
                 </div>
@@ -190,7 +195,7 @@ const OrderPage = () => {
             <div className="inner-area">
               <p>Delivery</p>
               <h6>Address</h6>
-              <h5>Africa Ave, Diplomatic Enclave, Chanakyapuri, New Delhi, Delhi 110023, India</h5>
+              <h5>{formatAddressWithName(selectedOrder.shippingAddressDetails)}</h5>
               <h6>Delivery Method</h6>
               <h5>Free (30 days)</h5>
             </div>
@@ -239,8 +244,27 @@ const OrderPage = () => {
               <h6>
                 {selectedOrder.transaction?.responseDataJson?.source?.brand} **
                 {selectedOrder.transaction?.responseDataJson?.source?.last4}{" "}
-                <img src={visaIcon} alt="" />
+                {/* <img src={visaIcon} alt="" /> */}
               </h6>
+
+              <div className="inner">
+                <div className="table-flex">
+                  <p>Transaction ID</p>
+                  <p>{selectedOrder.transaction?.responseDataJson?.id}</p>
+                </div>
+                <div className="table-flex">
+                  <p>Paid On</p>
+                  <p>
+                    {new Date(
+                      selectedOrder.transaction?.responseDataJson?.created
+                    ).toLocaleString()}
+                  </p>
+                </div>
+                <div className="table-flex">
+                  <p>Order Number</p>
+                  <p>#{selectedOrder.transaction?.responseDataJson?.external_reference_id}</p>
+                </div>
+              </div>
             </div>
             <div className="right-area">
               <h4>Order Summary</h4>

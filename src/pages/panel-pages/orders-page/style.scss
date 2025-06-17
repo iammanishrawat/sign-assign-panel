@@ -335,7 +335,7 @@
       flex-wrap: wrap;
       gap: 1rem;
       .left-area {
-        p {
+        p:not(.inner p) {
           font-size: 1.254rem;
           font-weight: 600;
           color: var(--subtext-color);
@@ -377,7 +377,7 @@
       flex-wrap: wrap;
       gap: 1rem;
       .left-area {
-        p {
+        p:not(.inner p) {
           color: var(--text-color);
           font-weight: 600;
           margin-bottom: 0.554rem;
@@ -390,6 +390,15 @@
           font-size: 1rem;
           img {
             width: 25px;
+          }
+        }
+        .inner {
+          width: 300px;
+          .table-flex {
+            display: flex;
+            justify-content: space-between;
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--border-color);
           }
         }
       }
