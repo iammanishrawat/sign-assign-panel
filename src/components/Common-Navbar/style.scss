@@ -159,6 +159,42 @@ header {
         }
       }
     }
+
+    .cart-container {
+      display: flex;
+      gap: 1rem;
+
+      a {
+        text-decoration: none;
+        width: max-content;
+        padding: 8px 20px;
+        border-radius: 4px;
+
+        &.cart-icon {
+          padding: 0;
+          color: inherit;
+          display: flex;
+          align-items: center;
+          font-size: 18px;
+        }
+      }
+
+      .cart-area {
+        position: relative;
+
+        span {
+          position: absolute;
+          background-color: #452e73;
+          color: #fff;
+          width: 20px;
+          height: 20px;
+          border-radius: 50px;
+          text-align: center;
+          font-size: 12px;
+          font-weight: 300;
+        }
+      }
+    }
   }
 }
 

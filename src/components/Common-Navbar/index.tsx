@@ -1,6 +1,6 @@
 import {faEnvelope, faPhone, faStar} from "@fortawesome/free-solid-svg-icons"
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
-import {useEffect} from "react"
+import {useEffect, useState} from "react"
 import {Link} from "react-router-dom"
 
 import logo from "../../assets/images/website-images/logo.png"
@@ -11,14 +11,19 @@ import {useAppDispatch} from "../../hooks/useAppDispatch"
 import {useAppSelector} from "../../hooks/useAppSelector"
 import "./style.scss"
 
+const BASE_WEB_PATH = import.meta.env.VITE_BASE_PATH_WEB as string
+
 const CommonNavbarComponent = () => {
   const {logout} = useAuth()
 
   const dispatch = useAppDispatch()
   const {productCategories, status, error} = useAppSelector(state => state.productCategory)
+  const [cartItemCount, setCartItemCount] = useState<number>(0)
 
   useEffect(() => {
     dispatch(listProductCategory())
+
+    setCartItemCount(Number(localStorage.getItem("cartItemCountUser") ?? "0"))
   }, [dispatch])
 
   return (
@@ -59,7 +64,7 @@ const CommonNavbarComponent = () => {
         <div className="desktop-top-menu">
           <div className="left-area">
             <div className="logo">
-              <Link to="/">
+              <Link to={BASE_WEB_PATH}>
                 <img src={logo} alt="Logo" />
               </Link>
             </div>
@@ -71,26 +76,26 @@ const CommonNavbarComponent = () => {
             <div className="menu-links">
               <ul>
                 <li>
-                  <Link to="#">About Us</Link>
+                  <Link to={`${BASE_WEB_PATH}/about-us`}>About Us</Link>
                 </li>
                 <li className="dropdown">
-                  <Link to="#">Service</Link>
-                  <ul className="dropdown-content">
+                  <Link to={`${BASE_WEB_PATH}/services`}>Service</Link>
+                  {/* <ul className="dropdown-content">
                     {Array.from({length: 5}).map((_, i) => (
                       <li className="dropdown-lists" key={i}>
                         <Link to="#">Sign Installation</Link>
                       </li>
                     ))}
-                  </ul>
+                  </ul> */}
                 </li>
                 <li>
                   <Link to="#">Design Lab</Link>
                 </li>
                 <li>
-                  <Link to="#">Learning Center</Link>
+                  <Link to={`${BASE_WEB_PATH}/learning-center`}>Learning Center</Link>
                 </li>
                 <li>
-                  <Link to="#">Contact Us</Link>
+                  <Link to={`${BASE_WEB_PATH}/contact-us`}>Contact Us</Link>
                 </li>
               </ul>
             </div>
@@ -104,20 +109,34 @@ const CommonNavbarComponent = () => {
                 <i className="fi fi-rs-user-gear"></i>
               </Link>
 
-              <button
+              <a
                 onClick={logout}
                 className="logout-icon"
                 title="Logout"
                 style={{
-                  background: "none",
-                  border: "none",
+                  // background: "none",
+                  // border: "none",
                   cursor: "pointer",
-                  padding: 0,
+                  // padding: 0,
                 }}
                 aria-label="Logout"
               >
                 <i className="fi fi-rr-sign-out-alt"></i>
-              </button>
+              </a>
+            </div>
+
+            <div className="cart-container">
+              <Link
+                to={`${BASE_WEB_PATH}/checkout`}
+                className="cart-icon"
+                title="Profile"
+                style={{cursor: "pointer"}}
+              >
+                <div className="cart-area">
+                  <i className="fi fi-rr-shopping-cart"></i>
+                  {Number(cartItemCount) > 0 && <span id="cartProductCount">{cartItemCount}</span>}
+                </div>
+              </Link>
             </div>
           </div>
         </div>
@@ -157,10 +176,11 @@ const CommonNavbarComponent = () => {
                         <nav className="nav" role="navigation">
                           <ul className="nav__list">
                             <li>
-                              <Link to="#">About Us</Link>
+                              <Link to={`${BASE_WEB_PATH}/about-us`}>About Us</Link>
                             </li>
                             <li>
-                              <input id="group-1" type="checkbox" hidden />
+                              <Link to={`${BASE_WEB_PATH}/services`}>Service</Link>
+                              {/* <input id="group-1" type="checkbox" hidden />
                               <label htmlFor="group-1">
                                 <span>
                                   <i className="fa fa-chevron-right" aria-hidden="true"></i>
@@ -176,7 +196,7 @@ const CommonNavbarComponent = () => {
                                     </label>
                                   </li>
                                 ))}
-                              </ul>
+                              </ul> */}
                             </li>
                             <li>
                               <input id="group-2" type="checkbox" hidden />
@@ -209,10 +229,10 @@ const CommonNavbarComponent = () => {
                               <Link to="#">Design Lab</Link>
                             </li>
                             <li>
-                              <Link to="#">Learning Center</Link>
+                              <Link to={`${BASE_WEB_PATH}/learning-center`}>Learning Center</Link>
                             </li>
                             <li>
-                              <Link to="#">Contact Us</Link>
+                              <Link to={`${BASE_WEB_PATH}/contact-us`}>Contact Us</Link>
                             </li>
                           </ul>
                         </nav>
