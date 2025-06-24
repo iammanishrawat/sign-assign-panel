@@ -284,14 +284,20 @@ const OrderPage = () => {
                   <p>Subtotal</p>
                   <p>${selectedOrder.amountDetails?.subTotalPrice ?? 0}</p>
                 </div>
-                <div className="table-flex">
-                  <h6>Discount</h6>
-                  <h6>${selectedOrder.amountDetails?.businessDiscountPrice ?? 0}</h6>
-                </div>
-                <div className="table-flex">
-                  <h6>Delivery</h6>
-                  <h6>$0.00</h6>
-                </div>
+                {Number(selectedOrder.amountDetails?.businessDiscountPrice) > 0 && (
+                  <div className="table-flex">
+                    <h6>Business Discount</h6>
+                    <h6 className="text-success">
+                      -${selectedOrder.amountDetails?.businessDiscountPrice ?? 0}
+                    </h6>
+                  </div>
+                )}
+                {Number(selectedOrder.amountDetails?.totalRushHourDeliveryAmount) > 0 && (
+                  <div className="table-flex">
+                    <h6>Rush Hour Delivery</h6>
+                    <h6>+${selectedOrder.amountDetails?.totalRushHourDeliveryAmount ?? 0}</h6>
+                  </div>
+                )}
                 <div className="table-flex">
                   <h6>Tax</h6>
                   <h6>+$0.00</h6>
